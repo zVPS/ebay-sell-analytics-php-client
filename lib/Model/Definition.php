@@ -45,7 +45,7 @@ use \Ebay\Sell\Analytics\ObjectSerializer;
  */
 class Definition implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -189,9 +189,9 @@ class Definition implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['data_type'] = $data['data_type'] ?? null;
-        $this->container['key'] = $data['key'] ?? null;
-        $this->container['localized_name'] = $data['localized_name'] ?? null;
+        $this->container['data_type'] = isset($data['data_type']) ? $data['data_type'] : null;
+        $this->container['key'] = isset($data['key']) ? $data['key'] : null;
+        $this->container['localized_name'] = isset($data['localized_name']) ? $data['localized_name'] : null;
     }
 
     /**
@@ -310,7 +310,7 @@ class Definition implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

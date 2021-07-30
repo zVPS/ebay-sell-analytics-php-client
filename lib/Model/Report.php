@@ -45,7 +45,7 @@ use \Ebay\Sell\Analytics\ObjectSerializer;
  */
 class Report implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -209,13 +209,13 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['dimension_metadata'] = $data['dimension_metadata'] ?? null;
-        $this->container['end_date'] = $data['end_date'] ?? null;
-        $this->container['header'] = $data['header'] ?? null;
-        $this->container['last_updated_date'] = $data['last_updated_date'] ?? null;
-        $this->container['records'] = $data['records'] ?? null;
-        $this->container['start_date'] = $data['start_date'] ?? null;
-        $this->container['warnings'] = $data['warnings'] ?? null;
+        $this->container['dimension_metadata'] = isset($data['dimension_metadata']) ? $data['dimension_metadata'] : null;
+        $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
+        $this->container['header'] = isset($data['header']) ? $data['header'] : null;
+        $this->container['last_updated_date'] = isset($data['last_updated_date']) ? $data['last_updated_date'] : null;
+        $this->container['records'] = isset($data['records']) ? $data['records'] : null;
+        $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
+        $this->container['warnings'] = isset($data['warnings']) ? $data['warnings'] : null;
     }
 
     /**
@@ -430,7 +430,7 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

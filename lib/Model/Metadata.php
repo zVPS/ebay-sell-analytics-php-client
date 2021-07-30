@@ -45,7 +45,7 @@ use \Ebay\Sell\Analytics\ObjectSerializer;
  */
 class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -184,8 +184,8 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['metadata_header'] = $data['metadata_header'] ?? null;
-        $this->container['metadata_records'] = $data['metadata_records'] ?? null;
+        $this->container['metadata_header'] = isset($data['metadata_header']) ? $data['metadata_header'] : null;
+        $this->container['metadata_records'] = isset($data['metadata_records']) ? $data['metadata_records'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

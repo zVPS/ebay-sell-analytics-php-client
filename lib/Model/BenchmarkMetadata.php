@@ -45,7 +45,7 @@ use \Ebay\Sell\Analytics\ObjectSerializer;
  */
 class BenchmarkMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -179,7 +179,7 @@ class BenchmarkMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['average'] = $data['average'] ?? null;
+        $this->container['average'] = isset($data['average']) ? $data['average'] : null;
     }
 
     /**
@@ -250,7 +250,7 @@ class BenchmarkMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

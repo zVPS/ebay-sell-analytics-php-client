@@ -45,7 +45,7 @@ use \Ebay\Sell\Analytics\ObjectSerializer;
  */
 class Record implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -184,8 +184,8 @@ class Record implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['dimension_values'] = $data['dimension_values'] ?? null;
-        $this->container['metric_values'] = $data['metric_values'] ?? null;
+        $this->container['dimension_values'] = isset($data['dimension_values']) ? $data['dimension_values'] : null;
+        $this->container['metric_values'] = isset($data['metric_values']) ? $data['metric_values'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class Record implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

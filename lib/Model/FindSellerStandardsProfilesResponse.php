@@ -45,7 +45,7 @@ use \Ebay\Sell\Analytics\ObjectSerializer;
  */
 class FindSellerStandardsProfilesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -179,7 +179,7 @@ class FindSellerStandardsProfilesResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['standards_profiles'] = $data['standards_profiles'] ?? null;
+        $this->container['standards_profiles'] = isset($data['standards_profiles']) ? $data['standards_profiles'] : null;
     }
 
     /**
@@ -250,7 +250,7 @@ class FindSellerStandardsProfilesResponse implements ModelInterface, ArrayAccess
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

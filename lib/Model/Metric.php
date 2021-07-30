@@ -45,7 +45,7 @@ use \Ebay\Sell\Analytics\ObjectSerializer;
  */
 class Metric implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -194,10 +194,10 @@ class Metric implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['benchmark'] = $data['benchmark'] ?? null;
-        $this->container['distributions'] = $data['distributions'] ?? null;
-        $this->container['metric_key'] = $data['metric_key'] ?? null;
-        $this->container['value'] = $data['value'] ?? null;
+        $this->container['benchmark'] = isset($data['benchmark']) ? $data['benchmark'] : null;
+        $this->container['distributions'] = isset($data['distributions']) ? $data['distributions'] : null;
+        $this->container['metric_key'] = isset($data['metric_key']) ? $data['metric_key'] : null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
     }
 
     /**
@@ -340,7 +340,7 @@ class Metric implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -45,7 +45,7 @@ use \Ebay\Sell\Analytics\ObjectSerializer;
  */
 class EvaluationCycle implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -194,10 +194,10 @@ class EvaluationCycle implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['end_date'] = $data['end_date'] ?? null;
-        $this->container['evaluation_date'] = $data['evaluation_date'] ?? null;
-        $this->container['evaluation_type'] = $data['evaluation_type'] ?? null;
-        $this->container['start_date'] = $data['start_date'] ?? null;
+        $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
+        $this->container['evaluation_date'] = isset($data['evaluation_date']) ? $data['evaluation_date'] : null;
+        $this->container['evaluation_type'] = isset($data['evaluation_type']) ? $data['evaluation_type'] : null;
+        $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
     }
 
     /**
@@ -340,7 +340,7 @@ class EvaluationCycle implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

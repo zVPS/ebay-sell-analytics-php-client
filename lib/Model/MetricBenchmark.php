@@ -45,7 +45,7 @@ use \Ebay\Sell\Analytics\ObjectSerializer;
  */
 class MetricBenchmark implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -194,10 +194,10 @@ class MetricBenchmark implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['adjustment'] = $data['adjustment'] ?? null;
-        $this->container['basis'] = $data['basis'] ?? null;
-        $this->container['metadata'] = $data['metadata'] ?? null;
-        $this->container['rating'] = $data['rating'] ?? null;
+        $this->container['adjustment'] = isset($data['adjustment']) ? $data['adjustment'] : null;
+        $this->container['basis'] = isset($data['basis']) ? $data['basis'] : null;
+        $this->container['metadata'] = isset($data['metadata']) ? $data['metadata'] : null;
+        $this->container['rating'] = isset($data['rating']) ? $data['rating'] : null;
     }
 
     /**
@@ -340,7 +340,7 @@ class MetricBenchmark implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

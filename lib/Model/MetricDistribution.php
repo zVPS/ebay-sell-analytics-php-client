@@ -1,11 +1,11 @@
 <?php
 /**
- * Record
+ * MetricDistribution
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * Record Class Doc Comment
+ * MetricDistribution Class Doc Comment
  *
  * @category Class
- * @description Type that defines the fields of the individual record of the report.
- * @package  Ebay\Sell
+ * @description This complex data type describes the metric distribution by basis.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Record implements ModelInterface, ArrayAccess, \JsonSerializable
+class MetricDistribution implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Record';
+    protected static $openAPIModelName = 'MetricDistribution';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,8 @@ class Record implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dimension_values' => '\Ebay\Sell\Analytics\Model\Value[]',
-        'metric_values' => '\Ebay\Sell\Analytics\Model\Value[]'
+        'basis' => 'string',
+        'data' => '\Ebay\Sell\Analytics\Model\Distribution[]'
     ];
 
     /**
@@ -72,8 +72,8 @@ class Record implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'dimension_values' => null,
-        'metric_values' => null
+        'basis' => null,
+        'data' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class Record implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'dimension_values' => 'dimensionValues',
-        'metric_values' => 'metricValues'
+        'basis' => 'basis',
+        'data' => 'data'
     ];
 
     /**
@@ -113,8 +113,8 @@ class Record implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'dimension_values' => 'setDimensionValues',
-        'metric_values' => 'setMetricValues'
+        'basis' => 'setBasis',
+        'data' => 'setData'
     ];
 
     /**
@@ -123,8 +123,8 @@ class Record implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'dimension_values' => 'getDimensionValues',
-        'metric_values' => 'getMetricValues'
+        'basis' => 'getBasis',
+        'data' => 'getData'
     ];
 
     /**
@@ -184,8 +184,8 @@ class Record implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['dimension_values'] = isset($data['dimension_values']) ? $data['dimension_values'] : null;
-        $this->container['metric_values'] = isset($data['metric_values']) ? $data['metric_values'] : null;
+        $this->container['basis'] = $data['basis'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -213,49 +213,49 @@ class Record implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets dimension_values
+     * Gets basis
      *
-     * @return \Ebay\Sell\Analytics\Model\Value[]|null
+     * @return string|null
      */
-    public function getDimensionValues()
+    public function getBasis()
     {
-        return $this->container['dimension_values'];
+        return $this->container['basis'];
     }
 
     /**
-     * Sets dimension_values
+     * Sets basis
      *
-     * @param \Ebay\Sell\Analytics\Model\Value[]|null $dimension_values A list where each element contains either the string DAY (if the dimension is DAY), or the listing ID for which the record's metric data is computed. A second array member, applicable, is always true for dimension values.
+     * @param string|null $basis This field returns the basis, or the method, by which the metric rating is calculated.
      *
      * @return self
      */
-    public function setDimensionValues($dimension_values)
+    public function setBasis($basis)
     {
-        $this->container['dimension_values'] = $dimension_values;
+        $this->container['basis'] = $basis;
 
         return $this;
     }
 
     /**
-     * Gets metric_values
+     * Gets data
      *
-     * @return \Ebay\Sell\Analytics\Model\Value[]|null
+     * @return \Ebay\Sell\Analytics\Model\Distribution[]|null
      */
-    public function getMetricValues()
+    public function getData()
     {
-        return $this->container['metric_values'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets metric_values
+     * Sets data
      *
-     * @param \Ebay\Sell\Analytics\Model\Value[]|null $metric_values A list where each element contains a value field that indicates the record's value for the metric. Each element also contains an applicable field that indicates the veracity of the computed value. Note that there are no metric names or IDs associated with the values returned in this array. The metadata to which these values relate can be found in the key values . The order of the metric values in this array equals the order of the key values in metadataHeader.
+     * @param \Ebay\Sell\Analytics\Model\Distribution[]|null $data This field returns a list of name/value pairs, where the name indicates the distribution being rated and the value indicates the count of seller transactions that meet the distribution criteria.
      *
      * @return self
      */
-    public function setMetricValues($metric_values)
+    public function setData($data)
     {
-        $this->container['metric_values'] = $metric_values;
+        $this->container['data'] = $data;
 
         return $this;
     }
@@ -280,7 +280,7 @@ class Record implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

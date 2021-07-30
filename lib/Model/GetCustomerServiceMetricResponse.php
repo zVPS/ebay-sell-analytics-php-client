@@ -1,11 +1,11 @@
 <?php
 /**
- * DimensionMetric
+ * GetCustomerServiceMetricResponse
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * DimensionMetric Class Doc Comment
+ * GetCustomerServiceMetricResponse Class Doc Comment
  *
  * @category Class
- * @description This complex type defines a the customer service metrics and seller benchmark performance related to  a given dimension.
- * @package  Ebay\Sell
+ * @description This complex data type defines the response data that is returned from a request to &lt;b&gt;getCustomerServiceMetric&lt;/b&gt;.  &lt;br&gt;&lt;br&gt;The &lt;b&gt;dimensionMetrics&lt;/b&gt; object contains the details of the dimension being measured and the calculated customer service metric values. &lt;br&gt;&lt;br&gt;The &lt;b&gt;evaluationCycle&lt;/b&gt; defines the period used to calculate the metric values.  &lt;br&gt;&lt;br&gt;The &lt;b&gt;marketplaceId&lt;/b&gt; is the eBay marketplace for which the metrics are being considered.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DimensionMetric implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetCustomerServiceMetricResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DimensionMetric';
+    protected static $openAPIModelName = 'GetCustomerServiceMetricResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,9 @@ class DimensionMetric implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dimension' => '\Ebay\Sell\Analytics\Model\Dimension',
-        'metrics' => '\Ebay\Sell\Analytics\Model\Metric[]'
+        'dimension_metrics' => '\Ebay\Sell\Analytics\Model\DimensionMetric[]',
+        'evaluation_cycle' => '\Ebay\Sell\Analytics\Model\EvaluationCycle',
+        'marketplace_id' => 'string'
     ];
 
     /**
@@ -72,8 +73,9 @@ class DimensionMetric implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'dimension' => null,
-        'metrics' => null
+        'dimension_metrics' => null,
+        'evaluation_cycle' => null,
+        'marketplace_id' => null
     ];
 
     /**
@@ -103,8 +105,9 @@ class DimensionMetric implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'dimension' => 'dimension',
-        'metrics' => 'metrics'
+        'dimension_metrics' => 'dimensionMetrics',
+        'evaluation_cycle' => 'evaluationCycle',
+        'marketplace_id' => 'marketplaceId'
     ];
 
     /**
@@ -113,8 +116,9 @@ class DimensionMetric implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'dimension' => 'setDimension',
-        'metrics' => 'setMetrics'
+        'dimension_metrics' => 'setDimensionMetrics',
+        'evaluation_cycle' => 'setEvaluationCycle',
+        'marketplace_id' => 'setMarketplaceId'
     ];
 
     /**
@@ -123,8 +127,9 @@ class DimensionMetric implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'dimension' => 'getDimension',
-        'metrics' => 'getMetrics'
+        'dimension_metrics' => 'getDimensionMetrics',
+        'evaluation_cycle' => 'getEvaluationCycle',
+        'marketplace_id' => 'getMarketplaceId'
     ];
 
     /**
@@ -184,8 +189,9 @@ class DimensionMetric implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['dimension'] = isset($data['dimension']) ? $data['dimension'] : null;
-        $this->container['metrics'] = isset($data['metrics']) ? $data['metrics'] : null;
+        $this->container['dimension_metrics'] = $data['dimension_metrics'] ?? null;
+        $this->container['evaluation_cycle'] = $data['evaluation_cycle'] ?? null;
+        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
     }
 
     /**
@@ -213,49 +219,73 @@ class DimensionMetric implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets dimension
+     * Gets dimension_metrics
      *
-     * @return \Ebay\Sell\Analytics\Model\Dimension|null
+     * @return \Ebay\Sell\Analytics\Model\DimensionMetric[]|null
      */
-    public function getDimension()
+    public function getDimensionMetrics()
     {
-        return $this->container['dimension'];
+        return $this->container['dimension_metrics'];
     }
 
     /**
-     * Sets dimension
+     * Sets dimension_metrics
      *
-     * @param \Ebay\Sell\Analytics\Model\Dimension|null $dimension dimension
+     * @param \Ebay\Sell\Analytics\Model\DimensionMetric[]|null $dimension_metrics This container provides a seller's customer service metric performance for a given dimension. In the getCustomerServiceMetric request, specify values for the following request parameters to control the returned dimension and the associated metric values: customer_service_metric_type evaluation_type evaluation_marketplace_id
      *
      * @return self
      */
-    public function setDimension($dimension)
+    public function setDimensionMetrics($dimension_metrics)
     {
-        $this->container['dimension'] = $dimension;
+        $this->container['dimension_metrics'] = $dimension_metrics;
 
         return $this;
     }
 
     /**
-     * Gets metrics
+     * Gets evaluation_cycle
      *
-     * @return \Ebay\Sell\Analytics\Model\Metric[]|null
+     * @return \Ebay\Sell\Analytics\Model\EvaluationCycle|null
      */
-    public function getMetrics()
+    public function getEvaluationCycle()
     {
-        return $this->container['metrics'];
+        return $this->container['evaluation_cycle'];
     }
 
     /**
-     * Sets metrics
+     * Sets evaluation_cycle
      *
-     * @param \Ebay\Sell\Analytics\Model\Metric[]|null $metrics This is a list of Metric elements where each element contains data and information related to the transactions grouped by the associated dimension.
+     * @param \Ebay\Sell\Analytics\Model\EvaluationCycle|null $evaluation_cycle evaluation_cycle
      *
      * @return self
      */
-    public function setMetrics($metrics)
+    public function setEvaluationCycle($evaluation_cycle)
     {
-        $this->container['metrics'] = $metrics;
+        $this->container['evaluation_cycle'] = $evaluation_cycle;
+
+        return $this;
+    }
+
+    /**
+     * Gets marketplace_id
+     *
+     * @return string|null
+     */
+    public function getMarketplaceId()
+    {
+        return $this->container['marketplace_id'];
+    }
+
+    /**
+     * Sets marketplace_id
+     *
+     * @param string|null $marketplace_id The eBay marketplace ID of the marketplace upon which the customer service metric evaluation is based. The customer_service_metric resource supports a limited set of marketplaces. For a complete list of the supported marketplaces, please see the Service metrics policy page. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/analytics/types/bas:MarketplaceIdEnum'>eBay API documentation</a>
+     *
+     * @return self
+     */
+    public function setMarketplaceId($marketplace_id)
+    {
+        $this->container['marketplace_id'] = $marketplace_id;
 
         return $this;
     }
@@ -280,7 +310,7 @@ class DimensionMetric implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

@@ -1,11 +1,11 @@
 <?php
 /**
- * ErrorParameter
+ * Value
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * ErrorParameter Class Doc Comment
+ * Value Class Doc Comment
  *
  * @category Class
- * @description A complex type that defines an error and error message.
- * @package  Ebay\Sell
+ * @description A complex type that contains a value, plus the veracity of that value.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorParameter implements ModelInterface, ArrayAccess, \JsonSerializable
+class Value implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorParameter';
+    protected static $openAPIModelName = 'Value';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,8 @@ class ErrorParameter implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'value' => 'string'
+        'applicable' => 'bool',
+        'value' => 'object'
     ];
 
     /**
@@ -72,7 +72,7 @@ class ErrorParameter implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
+        'applicable' => null,
         'value' => null
     ];
 
@@ -103,7 +103,7 @@ class ErrorParameter implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
+        'applicable' => 'applicable',
         'value' => 'value'
     ];
 
@@ -113,7 +113,7 @@ class ErrorParameter implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
+        'applicable' => 'setApplicable',
         'value' => 'setValue'
     ];
 
@@ -123,7 +123,7 @@ class ErrorParameter implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
+        'applicable' => 'getApplicable',
         'value' => 'getValue'
     ];
 
@@ -184,8 +184,8 @@ class ErrorParameter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['applicable'] = $data['applicable'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -213,25 +213,25 @@ class ErrorParameter implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets applicable
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getName()
+    public function getApplicable()
     {
-        return $this->container['name'];
+        return $this->container['applicable'];
     }
 
     /**
-     * Sets name
+     * Sets applicable
      *
-     * @param string|null $name Name of the entity that threw the error.
+     * @param bool|null $applicable If set to true, this flag indicates the value in the value field is valid as computed. A value of false indicates one or more of the values used to calculate the value was invalid. The occurrence of this is a rare, however consider this case: suppose a buyer navigates to a View Item page at 11:59 pm (the end of the day) and purchases the item at 12:05am the next day. In this case, the item would have been purchased with 0 views for the day.
      *
      * @return self
      */
-    public function setName($name)
+    public function setApplicable($applicable)
     {
-        $this->container['name'] = $name;
+        $this->container['applicable'] = $applicable;
 
         return $this;
     }
@@ -239,7 +239,7 @@ class ErrorParameter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets value
      *
-     * @return string|null
+     * @return object|null
      */
     public function getValue()
     {
@@ -249,7 +249,7 @@ class ErrorParameter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value
      *
-     * @param string|null $value A description of the error.
+     * @param object|null $value The value of the report data.
      *
      * @return self
      */
@@ -280,7 +280,7 @@ class ErrorParameter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

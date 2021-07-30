@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace Ebay\Sell\Test\Model;
+namespace Ebay\Sell\Analytics\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description Type the defines the metadata information of the report. This includes the headers and the individual metadata records.
- * @package     Ebay\Sell
+ * @package     Ebay\Sell\Analytics
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

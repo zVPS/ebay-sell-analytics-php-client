@@ -1,5 +1,5 @@
 {
-    "name": "zvps\/ebay-sell-analytics-php-client",
+    "name": "zvps/ebay-sell-analytics-php-client",
     "version": "5.0.0",
     "description": "The Analytics API provides data and information about a seller and their eBay business. The resources and methods in this API let sellers review information on their listing performance, metrics on their customer service performance, and details on their eBay seller performance rating. The three resources in the Analytics API provide the following data and information: Customer Service Metric &ndash; Returns data on a seller's customer service performance as compared to other seller's in the same peer group. Traffic Report &ndash; Returns data that shows how buyers are engaging with a seller's listings. Seller Standards Profile &ndash; Returns data pertaining to a seller's performance rating. Sellers can use the data and information returned by the various Analytics API methods to determine where they can make improvements to increase sales and how they might improve their seller status as viewed by eBay buyers. For details on using this API, see Analyzing seller performance.",
     "keywords": [
@@ -11,33 +11,29 @@
         "rest",
         "api"
     ],
-    "homepage": "https:\/\/openapi-generator.tech",
+    "homepage": "https://openapi-generator.tech",
     "license": "unlicense",
     "authors": [
         {
             "name": "OpenAPI-Generator contributors",
-            "homepage": "https:\/\/openapi-generator.tech"
+            "homepage": "https://openapi-generator.tech"
         }
     ],
     "require": {
-        "php": ">=5.6",
+        "php": ">=7.2",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "guzzlehttp\/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
-        "phpunit\/phpunit": "^8.0 || ^9.0",
-        "friendsofphp\/php-cs-fixer": "^2.12"
+        "phpunit/phpunit": "^8.0 || ^9.0",
+        "friendsofphp/php-cs-fixer": "^2.12"
     },
     "autoload": {
-        "psr-4": {
-            "Ebay\\Sell\\": "lib\/"
-        }
+        "psr-4": { "Ebay\\Sell\\Analytics\\" : "lib/" }
     },
     "autoload-dev": {
-        "psr-4": {
-            "Ebay\\Sell\\Test\\": "test\/"
-        }
+        "psr-4": { "Ebay\\Sell\\Analytics\\Test\\" : "test/" }
     }
 }

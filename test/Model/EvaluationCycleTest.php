@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace Ebay\Sell\Test\Model;
+namespace Ebay\Sell\Analytics\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description This complex type describes the start and end dates of the of the time period over which the associated benchmark is computed.  &lt;br&gt;&lt;br&gt;All timestamps are based on Mountain Standard Time (MST).  &lt;br&gt;&lt;br&gt;The timestamp is formatted as an &lt;a href&#x3D;\&quot;https://www.iso.org/iso-8601-date-and-time-format.html\&quot; title&#x3D;\&quot;https://www.iso.org\&quot; target&#x3D;\&quot;_blank\&quot;&gt;ISO 8601&lt;/a&gt; string, which is based on the 24-hour Coordinated Universal Time (UTC) clock.
- * @package     Ebay\Sell
+ * @package     Ebay\Sell\Analytics
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

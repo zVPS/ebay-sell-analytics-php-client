@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace Ebay\Sell\Test\Model;
+namespace Ebay\Sell\Analytics\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description This complex type defines the fields that comprise the benchmark against which the seller&#39;s performance is compared. The comparison determines the seller&#39;s rating for the metric.
- * @package     Ebay\Sell
+ * @package     Ebay\Sell\Analytics
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

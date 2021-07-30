@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace Ebay\Sell\Test\Model;
+namespace Ebay\Sell\Analytics\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description The fields in this complex type define the dimension, or attributes, by which the associated customer service metric and benchmark data is measured.  &lt;br&gt;&lt;br&gt;The value of &lt;b&gt;dimensionKey&lt;/b&gt; gets set according to the configuration of the input request. The &lt;b&gt;name&lt;/b&gt; and &lt;b&gt;value&lt;/b&gt; pair further define dimension under the key.
- * @package     Ebay\Sell
+ * @package     Ebay\Sell\Analytics
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

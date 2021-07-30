@@ -1,11 +1,11 @@
 <?php
 /**
- * Value
+ * Definition
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * Value Class Doc Comment
+ * Definition Class Doc Comment
  *
  * @category Class
- * @description A complex type that contains a value, plus the veracity of that value.
- * @package  Ebay\Sell
+ * @description A complex type that defines a dimension key and metrics in a traffic report.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Value implements ModelInterface, ArrayAccess, \JsonSerializable
+class Definition implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Value';
+    protected static $openAPIModelName = 'Definition';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,9 @@ class Value implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'applicable' => 'bool',
-        'value' => 'object'
+        'data_type' => 'string',
+        'key' => 'string',
+        'localized_name' => 'string'
     ];
 
     /**
@@ -72,8 +73,9 @@ class Value implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'applicable' => null,
-        'value' => null
+        'data_type' => null,
+        'key' => null,
+        'localized_name' => null
     ];
 
     /**
@@ -103,8 +105,9 @@ class Value implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'applicable' => 'applicable',
-        'value' => 'value'
+        'data_type' => 'dataType',
+        'key' => 'key',
+        'localized_name' => 'localizedName'
     ];
 
     /**
@@ -113,8 +116,9 @@ class Value implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'applicable' => 'setApplicable',
-        'value' => 'setValue'
+        'data_type' => 'setDataType',
+        'key' => 'setKey',
+        'localized_name' => 'setLocalizedName'
     ];
 
     /**
@@ -123,8 +127,9 @@ class Value implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'applicable' => 'getApplicable',
-        'value' => 'getValue'
+        'data_type' => 'getDataType',
+        'key' => 'getKey',
+        'localized_name' => 'getLocalizedName'
     ];
 
     /**
@@ -184,8 +189,9 @@ class Value implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['applicable'] = isset($data['applicable']) ? $data['applicable'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['data_type'] = $data['data_type'] ?? null;
+        $this->container['key'] = $data['key'] ?? null;
+        $this->container['localized_name'] = $data['localized_name'] ?? null;
     }
 
     /**
@@ -213,49 +219,73 @@ class Value implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets applicable
+     * Gets data_type
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getApplicable()
+    public function getDataType()
     {
-        return $this->container['applicable'];
+        return $this->container['data_type'];
     }
 
     /**
-     * Sets applicable
+     * Sets data_type
      *
-     * @param bool|null $applicable If set to true, this flag indicates the value in the value field is valid as computed. A value of false indicates one or more of the values used to calculate the value was invalid. The occurrence of this is a rare, however consider this case: suppose a buyer navigates to a View Item page at 11:59 pm (the end of the day) and purchases the item at 12:05am the next day. In this case, the item would have been purchased with 0 views for the day.
+     * @param string|null $data_type Indicates the data type of the returned dimension. For example, if the dimension is day, the data type is DATE. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/analytics/types/ssp:DataTypeEnum'>eBay API documentation</a>
      *
      * @return self
      */
-    public function setApplicable($applicable)
+    public function setDataType($data_type)
     {
-        $this->container['applicable'] = $applicable;
+        $this->container['data_type'] = $data_type;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets key
      *
-     * @return object|null
+     * @return string|null
      */
-    public function getValue()
+    public function getKey()
     {
-        return $this->container['value'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets value
+     * Sets key
      *
-     * @param object|null $value The value of the report data.
+     * @param string|null $key The value the dimension or metric parameter as submitted in the request.
      *
      * @return self
      */
-    public function setValue($value)
+    public function setKey($key)
     {
-        $this->container['value'] = $value;
+        $this->container['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Gets localized_name
+     *
+     * @return string|null
+     */
+    public function getLocalizedName()
+    {
+        return $this->container['localized_name'];
+    }
+
+    /**
+     * Sets localized_name
+     *
+     * @param string|null $localized_name The localized name of the metric or dimension (translated into the language specified in the Accept-Language HTTP request header). For example, if Accept-Language is set to de-DE, the value &quot;day&quot; in the dimension container is returned as &quot;tag&quot;, and a metric of TRANSACTION is returned as &quot;Transaktionsanzahl&quot;.
+     *
+     * @return self
+     */
+    public function setLocalizedName($localized_name)
+    {
+        $this->container['localized_name'] = $localized_name;
 
         return $this;
     }
@@ -280,7 +310,7 @@ class Value implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

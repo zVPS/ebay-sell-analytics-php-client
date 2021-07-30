@@ -1,11 +1,11 @@
 <?php
 /**
- * Metadata
+ * MetadataHeader
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * Metadata Class Doc Comment
+ * MetadataHeader Class Doc Comment
  *
  * @category Class
- * @description Type the defines the metadata information of the report. This includes the headers and the individual metadata records.
- * @package  Ebay\Sell
+ * @description Type that defines the metadata header fields.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
+class MetadataHeader implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Metadata';
+    protected static $openAPIModelName = 'MetadataHeader';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,8 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'metadata_header' => '\Ebay\Sell\Analytics\Model\MetadataHeader',
-        'metadata_records' => '\Ebay\Sell\Analytics\Model\MetadataRecord[]'
+        'key' => 'string',
+        'metadata_keys' => '\Ebay\Sell\Analytics\Model\Definition[]'
     ];
 
     /**
@@ -72,8 +72,8 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'metadata_header' => null,
-        'metadata_records' => null
+        'key' => null,
+        'metadata_keys' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'metadata_header' => 'metadataHeader',
-        'metadata_records' => 'metadataRecords'
+        'key' => 'key',
+        'metadata_keys' => 'metadataKeys'
     ];
 
     /**
@@ -113,8 +113,8 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'metadata_header' => 'setMetadataHeader',
-        'metadata_records' => 'setMetadataRecords'
+        'key' => 'setKey',
+        'metadata_keys' => 'setMetadataKeys'
     ];
 
     /**
@@ -123,8 +123,8 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'metadata_header' => 'getMetadataHeader',
-        'metadata_records' => 'getMetadataRecords'
+        'key' => 'getKey',
+        'metadata_keys' => 'getMetadataKeys'
     ];
 
     /**
@@ -184,8 +184,8 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['metadata_header'] = isset($data['metadata_header']) ? $data['metadata_header'] : null;
-        $this->container['metadata_records'] = isset($data['metadata_records']) ? $data['metadata_records'] : null;
+        $this->container['key'] = $data['key'] ?? null;
+        $this->container['metadata_keys'] = $data['metadata_keys'] ?? null;
     }
 
     /**
@@ -213,49 +213,49 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets metadata_header
+     * Gets key
      *
-     * @return \Ebay\Sell\Analytics\Model\MetadataHeader|null
+     * @return string|null
      */
-    public function getMetadataHeader()
+    public function getKey()
     {
-        return $this->container['metadata_header'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets metadata_header
+     * Sets key
      *
-     * @param \Ebay\Sell\Analytics\Model\MetadataHeader|null $metadata_header metadata_header
+     * @param string|null $key The key value used for the report. For example: &quot;key&quot;: &quot;LISTING_ID&quot;
      *
      * @return self
      */
-    public function setMetadataHeader($metadata_header)
+    public function setKey($key)
     {
-        $this->container['metadata_header'] = $metadata_header;
+        $this->container['key'] = $key;
 
         return $this;
     }
 
     /**
-     * Gets metadata_records
+     * Gets metadata_keys
      *
-     * @return \Ebay\Sell\Analytics\Model\MetadataRecord[]|null
+     * @return \Ebay\Sell\Analytics\Model\Definition[]|null
      */
-    public function getMetadataRecords()
+    public function getMetadataKeys()
     {
-        return $this->container['metadata_records'];
+        return $this->container['metadata_keys'];
     }
 
     /**
-     * Sets metadata_records
+     * Sets metadata_keys
      *
-     * @param \Ebay\Sell\Analytics\Model\MetadataRecord[]|null $metadata_records A list of the individual report records.
+     * @param \Ebay\Sell\Analytics\Model\Definition[]|null $metadata_keys The list of dimension key values used for the report header. Each list element contains the key name, its data type, and its localized name. For example: &quot;metadataKeys&quot;: [ &nbsp;&nbsp;&quot;key&quot;: &quot;LISTING_TITLE&quot;, &nbsp;&nbsp;&quot;localizedName&quot;: &quot;Listing title&quot;, &nbsp;&nbsp;&quot;dataType&quot;: &quot;STRING&quot;
      *
      * @return self
      */
-    public function setMetadataRecords($metadata_records)
+    public function setMetadataKeys($metadata_keys)
     {
-        $this->container['metadata_records'] = $metadata_records;
+        $this->container['metadata_keys'] = $metadata_keys;
 
         return $this;
     }
@@ -280,7 +280,7 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

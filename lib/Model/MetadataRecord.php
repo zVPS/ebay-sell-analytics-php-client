@@ -1,11 +1,11 @@
 <?php
 /**
- * MetricDistribution
+ * MetadataRecord
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * MetricDistribution Class Doc Comment
+ * MetadataRecord Class Doc Comment
  *
  * @category Class
- * @description This complex data type describes the metric distribution by basis.
- * @package  Ebay\Sell
+ * @description A complex type that defines the data records returned in the report.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class MetricDistribution implements ModelInterface, ArrayAccess, \JsonSerializable
+class MetadataRecord implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MetricDistribution';
+    protected static $openAPIModelName = 'MetadataRecord';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,8 @@ class MetricDistribution implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'basis' => 'string',
-        'data' => '\Ebay\Sell\Analytics\Model\Distribution[]'
+        'metadata_values' => '\Ebay\Sell\Analytics\Model\Value[]',
+        'value' => '\Ebay\Sell\Analytics\Model\Value'
     ];
 
     /**
@@ -72,8 +72,8 @@ class MetricDistribution implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'basis' => null,
-        'data' => null
+        'metadata_values' => null,
+        'value' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class MetricDistribution implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'basis' => 'basis',
-        'data' => 'data'
+        'metadata_values' => 'metadataValues',
+        'value' => 'value'
     ];
 
     /**
@@ -113,8 +113,8 @@ class MetricDistribution implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'basis' => 'setBasis',
-        'data' => 'setData'
+        'metadata_values' => 'setMetadataValues',
+        'value' => 'setValue'
     ];
 
     /**
@@ -123,8 +123,8 @@ class MetricDistribution implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'basis' => 'getBasis',
-        'data' => 'getData'
+        'metadata_values' => 'getMetadataValues',
+        'value' => 'getValue'
     ];
 
     /**
@@ -184,8 +184,8 @@ class MetricDistribution implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['basis'] = isset($data['basis']) ? $data['basis'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['metadata_values'] = $data['metadata_values'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -213,49 +213,49 @@ class MetricDistribution implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets basis
+     * Gets metadata_values
      *
-     * @return string|null
+     * @return \Ebay\Sell\Analytics\Model\Value[]|null
      */
-    public function getBasis()
+    public function getMetadataValues()
     {
-        return $this->container['basis'];
+        return $this->container['metadata_values'];
     }
 
     /**
-     * Sets basis
+     * Sets metadata_values
      *
-     * @param string|null $basis This field returns the basis, or the method, by which the metric rating is calculated.
+     * @param \Ebay\Sell\Analytics\Model\Value[]|null $metadata_values A list of data in a row returned in the traffic report. The data in each of the cells match the labels in headers of the report.
      *
      * @return self
      */
-    public function setBasis($basis)
+    public function setMetadataValues($metadata_values)
     {
-        $this->container['basis'] = $basis;
+        $this->container['metadata_values'] = $metadata_values;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets value
      *
-     * @return \Ebay\Sell\Analytics\Model\Distribution[]|null
+     * @return \Ebay\Sell\Analytics\Model\Value|null
      */
-    public function getData()
+    public function getValue()
     {
-        return $this->container['data'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets data
+     * Sets value
      *
-     * @param \Ebay\Sell\Analytics\Model\Distribution[]|null $data This field returns a list of name/value pairs, where the name indicates the distribution being rated and the value indicates the count of seller transactions that meet the distribution criteria.
+     * @param \Ebay\Sell\Analytics\Model\Value|null $value value
      *
      * @return self
      */
-    public function setData($data)
+    public function setValue($value)
     {
-        $this->container['data'] = $data;
+        $this->container['value'] = $value;
 
         return $this;
     }
@@ -280,7 +280,7 @@ class MetricDistribution implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

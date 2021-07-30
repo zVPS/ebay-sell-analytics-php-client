@@ -1,11 +1,11 @@
 <?php
 /**
- * EvaluationCycle
+ * MetricBenchmark
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * EvaluationCycle Class Doc Comment
+ * MetricBenchmark Class Doc Comment
  *
  * @category Class
- * @description This complex type describes the start and end dates of the of the time period over which the associated benchmark is computed.  &lt;br&gt;&lt;br&gt;All timestamps are based on Mountain Standard Time (MST).  &lt;br&gt;&lt;br&gt;The timestamp is formatted as an &lt;a href&#x3D;\&quot;https://www.iso.org/iso-8601-date-and-time-format.html\&quot; title&#x3D;\&quot;https://www.iso.org\&quot; target&#x3D;\&quot;_blank\&quot;&gt;ISO 8601&lt;/a&gt; string, which is based on the 24-hour Coordinated Universal Time (UTC) clock.
- * @package  Ebay\Sell
+ * @description This complex type defines the benchmark data, which includes the &lt;b&gt;average&lt;/b&gt; value of the metric for the group (the benchmark) and the seller&#39;s overall &lt;b&gt;rating&lt;/b&gt; when compared to the benchmark.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class EvaluationCycle implements ModelInterface, ArrayAccess, \JsonSerializable
+class MetricBenchmark implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EvaluationCycle';
+    protected static $openAPIModelName = 'MetricBenchmark';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,10 @@ class EvaluationCycle implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'end_date' => 'string',
-        'evaluation_date' => 'string',
-        'evaluation_type' => 'string',
-        'start_date' => 'string'
+        'adjustment' => 'string',
+        'basis' => 'string',
+        'metadata' => '\Ebay\Sell\Analytics\Model\BenchmarkMetadata',
+        'rating' => 'string'
     ];
 
     /**
@@ -74,10 +74,10 @@ class EvaluationCycle implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'end_date' => null,
-        'evaluation_date' => null,
-        'evaluation_type' => null,
-        'start_date' => null
+        'adjustment' => null,
+        'basis' => null,
+        'metadata' => null,
+        'rating' => null
     ];
 
     /**
@@ -107,10 +107,10 @@ class EvaluationCycle implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'end_date' => 'endDate',
-        'evaluation_date' => 'evaluationDate',
-        'evaluation_type' => 'evaluationType',
-        'start_date' => 'startDate'
+        'adjustment' => 'adjustment',
+        'basis' => 'basis',
+        'metadata' => 'metadata',
+        'rating' => 'rating'
     ];
 
     /**
@@ -119,10 +119,10 @@ class EvaluationCycle implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'end_date' => 'setEndDate',
-        'evaluation_date' => 'setEvaluationDate',
-        'evaluation_type' => 'setEvaluationType',
-        'start_date' => 'setStartDate'
+        'adjustment' => 'setAdjustment',
+        'basis' => 'setBasis',
+        'metadata' => 'setMetadata',
+        'rating' => 'setRating'
     ];
 
     /**
@@ -131,10 +131,10 @@ class EvaluationCycle implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'end_date' => 'getEndDate',
-        'evaluation_date' => 'getEvaluationDate',
-        'evaluation_type' => 'getEvaluationType',
-        'start_date' => 'getStartDate'
+        'adjustment' => 'getAdjustment',
+        'basis' => 'getBasis',
+        'metadata' => 'getMetadata',
+        'rating' => 'getRating'
     ];
 
     /**
@@ -194,10 +194,10 @@ class EvaluationCycle implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
-        $this->container['evaluation_date'] = isset($data['evaluation_date']) ? $data['evaluation_date'] : null;
-        $this->container['evaluation_type'] = isset($data['evaluation_type']) ? $data['evaluation_type'] : null;
-        $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
+        $this->container['adjustment'] = $data['adjustment'] ?? null;
+        $this->container['basis'] = $data['basis'] ?? null;
+        $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['rating'] = $data['rating'] ?? null;
     }
 
     /**
@@ -225,97 +225,97 @@ class EvaluationCycle implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets end_date
+     * Gets adjustment
      *
      * @return string|null
      */
-    public function getEndDate()
+    public function getAdjustment()
     {
-        return $this->container['end_date'];
+        return $this->container['adjustment'];
     }
 
     /**
-     * Sets end_date
+     * Sets adjustment
      *
-     * @param string|null $end_date End date and time of the transaction lookback range. All timestamps are based on Mountain Standard Time (MST). The timestamp is formatted as an ISO 8601 string, which is based on the 24-hour Coordinated Universal Time (UTC) clock.
+     * @param string|null $adjustment If this field is present, it indicates that the rating given to the seller was &quot;adjusted&quot; for one reason or another. If eBay determines that the normal rating of a seller is impacted by circumstances beyond their control, they can issue an override to adjust the rating given to the seller. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/analytics/types/api:RatingAdjustmentTypeEnum'>eBay API documentation</a>
      *
      * @return self
      */
-    public function setEndDate($end_date)
+    public function setAdjustment($adjustment)
     {
-        $this->container['end_date'] = $end_date;
+        $this->container['adjustment'] = $adjustment;
 
         return $this;
     }
 
     /**
-     * Gets evaluation_date
+     * Gets basis
      *
      * @return string|null
      */
-    public function getEvaluationDate()
+    public function getBasis()
     {
-        return $this->container['evaluation_date'];
+        return $this->container['basis'];
     }
 
     /**
-     * Sets evaluation_date
+     * Sets basis
      *
-     * @param string|null $evaluation_date The ISO-8601 date and time at which the seller was evaluated for this customer service metric rating.
+     * @param string|null $basis This field returns the &quot;basis&quot; by which the benchmark is calculated for the customer service metric type. Currently, the only supported basis is PEER_BENCHMARK. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/analytics/types/api:BenchmarkTypeEnum'>eBay API documentation</a>
      *
      * @return self
      */
-    public function setEvaluationDate($evaluation_date)
+    public function setBasis($basis)
     {
-        $this->container['evaluation_date'] = $evaluation_date;
+        $this->container['basis'] = $basis;
 
         return $this;
     }
 
     /**
-     * Gets evaluation_type
+     * Gets metadata
      *
-     * @return string|null
+     * @return \Ebay\Sell\Analytics\Model\BenchmarkMetadata|null
      */
-    public function getEvaluationType()
+    public function getMetadata()
     {
-        return $this->container['evaluation_type'];
+        return $this->container['metadata'];
     }
 
     /**
-     * Sets evaluation_type
+     * Sets metadata
      *
-     * @param string|null $evaluation_type This field specifies the transaction lookback period used for the evaluation. The evaluation_type value specified in the request is returned in this field. There are two possible values: CURRENT &ndash; A monthly evaluation that occurs on the 20th of every month. PROJECTED &ndash; A daily evaluation that provides a projection of how the seller is currently performing with regards to the upcoming evaluation period. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/analytics/types/api:EvaluationTypeEnum'>eBay API documentation</a>
+     * @param \Ebay\Sell\Analytics\Model\BenchmarkMetadata|null $metadata metadata
      *
      * @return self
      */
-    public function setEvaluationType($evaluation_type)
+    public function setMetadata($metadata)
     {
-        $this->container['evaluation_type'] = $evaluation_type;
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
 
     /**
-     * Gets start_date
+     * Gets rating
      *
      * @return string|null
      */
-    public function getStartDate()
+    public function getRating()
     {
-        return $this->container['start_date'];
+        return $this->container['rating'];
     }
 
     /**
-     * Sets start_date
+     * Sets rating
      *
-     * @param string|null $start_date The start date and time of the transaction lookback range. All timestamps are based on Mountain Standard Time (MST). The timestamp is formatted as an ISO 8601 string, which is based on the 24-hour Coordinated Universal Time (UTC) clock. Format: [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss].[sss]Z Example: 2018-08-04T07:09:00.000Z
+     * @param string|null $rating This field returns seller's rating for the customer service metric. The rating is set to a value that equals the relative deviation between the seller's metric value and the benchmark value for the customer service metric. Deviation values range from LOW to VERY HIGH, and the lower the deviation, the better the seller rating. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/analytics/types/api:RatingTypeEnum'>eBay API documentation</a>
      *
      * @return self
      */
-    public function setStartDate($start_date)
+    public function setRating($rating)
     {
-        $this->container['start_date'] = $start_date;
+        $this->container['rating'] = $rating;
 
         return $this;
     }
@@ -340,7 +340,7 @@ class EvaluationCycle implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

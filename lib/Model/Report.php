@@ -1,11 +1,11 @@
 <?php
 /**
- * Error
+ * Report
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * Error Class Doc Comment
+ * Report Class Doc Comment
  *
  * @category Class
- * @description Type that defines the fields that can be returned in an error.
- * @package  Ebay\Sell
+ * @description The complex type that defines that defines the report.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Error implements ModelInterface, ArrayAccess, \JsonSerializable
+class Report implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Error';
+    protected static $openAPIModelName = 'Report';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,15 +60,13 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'category' => 'string',
-        'domain' => 'string',
-        'error_id' => 'int',
-        'input_ref_ids' => 'string[]',
-        'long_message' => 'string',
-        'message' => 'string',
-        'output_ref_ids' => 'string[]',
-        'parameters' => '\Ebay\Sell\Analytics\Model\ErrorParameter[]',
-        'subdomain' => 'string'
+        'dimension_metadata' => '\Ebay\Sell\Analytics\Model\Metadata[]',
+        'end_date' => 'string',
+        'header' => '\Ebay\Sell\Analytics\Model\Header',
+        'last_updated_date' => 'string',
+        'records' => '\Ebay\Sell\Analytics\Model\Record[]',
+        'start_date' => 'string',
+        'warnings' => '\Ebay\Sell\Analytics\Model\Error[]'
     ];
 
     /**
@@ -79,15 +77,13 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'category' => null,
-        'domain' => null,
-        'error_id' => null,
-        'input_ref_ids' => null,
-        'long_message' => null,
-        'message' => null,
-        'output_ref_ids' => null,
-        'parameters' => null,
-        'subdomain' => null
+        'dimension_metadata' => null,
+        'end_date' => null,
+        'header' => null,
+        'last_updated_date' => null,
+        'records' => null,
+        'start_date' => null,
+        'warnings' => null
     ];
 
     /**
@@ -117,15 +113,13 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'category' => 'category',
-        'domain' => 'domain',
-        'error_id' => 'errorId',
-        'input_ref_ids' => 'inputRefIds',
-        'long_message' => 'longMessage',
-        'message' => 'message',
-        'output_ref_ids' => 'outputRefIds',
-        'parameters' => 'parameters',
-        'subdomain' => 'subdomain'
+        'dimension_metadata' => 'dimensionMetadata',
+        'end_date' => 'endDate',
+        'header' => 'header',
+        'last_updated_date' => 'lastUpdatedDate',
+        'records' => 'records',
+        'start_date' => 'startDate',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -134,15 +128,13 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'category' => 'setCategory',
-        'domain' => 'setDomain',
-        'error_id' => 'setErrorId',
-        'input_ref_ids' => 'setInputRefIds',
-        'long_message' => 'setLongMessage',
-        'message' => 'setMessage',
-        'output_ref_ids' => 'setOutputRefIds',
-        'parameters' => 'setParameters',
-        'subdomain' => 'setSubdomain'
+        'dimension_metadata' => 'setDimensionMetadata',
+        'end_date' => 'setEndDate',
+        'header' => 'setHeader',
+        'last_updated_date' => 'setLastUpdatedDate',
+        'records' => 'setRecords',
+        'start_date' => 'setStartDate',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -151,15 +143,13 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'category' => 'getCategory',
-        'domain' => 'getDomain',
-        'error_id' => 'getErrorId',
-        'input_ref_ids' => 'getInputRefIds',
-        'long_message' => 'getLongMessage',
-        'message' => 'getMessage',
-        'output_ref_ids' => 'getOutputRefIds',
-        'parameters' => 'getParameters',
-        'subdomain' => 'getSubdomain'
+        'dimension_metadata' => 'getDimensionMetadata',
+        'end_date' => 'getEndDate',
+        'header' => 'getHeader',
+        'last_updated_date' => 'getLastUpdatedDate',
+        'records' => 'getRecords',
+        'start_date' => 'getStartDate',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -219,15 +209,13 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['category'] = isset($data['category']) ? $data['category'] : null;
-        $this->container['domain'] = isset($data['domain']) ? $data['domain'] : null;
-        $this->container['error_id'] = isset($data['error_id']) ? $data['error_id'] : null;
-        $this->container['input_ref_ids'] = isset($data['input_ref_ids']) ? $data['input_ref_ids'] : null;
-        $this->container['long_message'] = isset($data['long_message']) ? $data['long_message'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['output_ref_ids'] = isset($data['output_ref_ids']) ? $data['output_ref_ids'] : null;
-        $this->container['parameters'] = isset($data['parameters']) ? $data['parameters'] : null;
-        $this->container['subdomain'] = isset($data['subdomain']) ? $data['subdomain'] : null;
+        $this->container['dimension_metadata'] = $data['dimension_metadata'] ?? null;
+        $this->container['end_date'] = $data['end_date'] ?? null;
+        $this->container['header'] = $data['header'] ?? null;
+        $this->container['last_updated_date'] = $data['last_updated_date'] ?? null;
+        $this->container['records'] = $data['records'] ?? null;
+        $this->container['start_date'] = $data['start_date'] ?? null;
+        $this->container['warnings'] = $data['warnings'] ?? null;
     }
 
     /**
@@ -255,217 +243,169 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets category
+     * Gets dimension_metadata
+     *
+     * @return \Ebay\Sell\Analytics\Model\Metadata[]|null
+     */
+    public function getDimensionMetadata()
+    {
+        return $this->container['dimension_metadata'];
+    }
+
+    /**
+     * Sets dimension_metadata
+     *
+     * @param \Ebay\Sell\Analytics\Model\Metadata[]|null $dimension_metadata A complex type containing the header of the report and the type of data containted in the rows of the report.
+     *
+     * @return self
+     */
+    public function setDimensionMetadata($dimension_metadata)
+    {
+        $this->container['dimension_metadata'] = $dimension_metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_date
      *
      * @return string|null
      */
-    public function getCategory()
+    public function getEndDate()
     {
-        return $this->container['category'];
+        return $this->container['end_date'];
     }
 
     /**
-     * Sets category
+     * Sets end_date
      *
-     * @param string|null $category Identifies whether the error was in the REQUEST or happened when running the APPLICATION.
+     * @param string|null $end_date The time stamp is formatted as an ISO 8601 string, which is based on the 24-hour Universal Coordinated Time (UTC) clock. If you specify an end date that is beyond the lastUpdatedDate value, eBay returns a report that contains data only up to the lastUpdateDate date. Format: [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss].[sss]Z Example: 2018-08-20T07:09:00.000Z
      *
      * @return self
      */
-    public function setCategory($category)
+    public function setEndDate($end_date)
     {
-        $this->container['category'] = $category;
+        $this->container['end_date'] = $end_date;
 
         return $this;
     }
 
     /**
-     * Gets domain
+     * Gets header
+     *
+     * @return \Ebay\Sell\Analytics\Model\Header|null
+     */
+    public function getHeader()
+    {
+        return $this->container['header'];
+    }
+
+    /**
+     * Sets header
+     *
+     * @param \Ebay\Sell\Analytics\Model\Header|null $header header
+     *
+     * @return self
+     */
+    public function setHeader($header)
+    {
+        $this->container['header'] = $header;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_updated_date
      *
      * @return string|null
      */
-    public function getDomain()
+    public function getLastUpdatedDate()
     {
-        return $this->container['domain'];
+        return $this->container['last_updated_date'];
     }
 
     /**
-     * Sets domain
+     * Sets last_updated_date
      *
-     * @param string|null $domain The primary system where the error occurred. This is relevant for application errors. For Analytics errors, it always has the value API_ANALYTICS.
+     * @param string|null $last_updated_date The date and time, in ISO 8601 format, that indicates the last time the data returned in the report was updated.
      *
      * @return self
      */
-    public function setDomain($domain)
+    public function setLastUpdatedDate($last_updated_date)
     {
-        $this->container['domain'] = $domain;
+        $this->container['last_updated_date'] = $last_updated_date;
 
         return $this;
     }
 
     /**
-     * Gets error_id
+     * Gets records
      *
-     * @return int|null
+     * @return \Ebay\Sell\Analytics\Model\Record[]|null
      */
-    public function getErrorId()
+    public function getRecords()
     {
-        return $this->container['error_id'];
+        return $this->container['records'];
     }
 
     /**
-     * Sets error_id
+     * Sets records
      *
-     * @param int|null $error_id A positive integer that uniquely identifies the specific error condition that occurred. Your application can use error codes as identifiers in your customized error-handling algorithms. Traffic report error IDs range from 50001 to 50500.
+     * @param \Ebay\Sell\Analytics\Model\Record[]|null $records A complex type containing the individual data records for the traffic report.
      *
      * @return self
      */
-    public function setErrorId($error_id)
+    public function setRecords($records)
     {
-        $this->container['error_id'] = $error_id;
+        $this->container['records'] = $records;
 
         return $this;
     }
 
     /**
-     * Gets input_ref_ids
-     *
-     * @return string[]|null
-     */
-    public function getInputRefIds()
-    {
-        return $this->container['input_ref_ids'];
-    }
-
-    /**
-     * Sets input_ref_ids
-     *
-     * @param string[]|null $input_ref_ids Identifies specific request elements associated with the error, if any. inputRefId's response is format specific. For JSON, use JSONPath notation.
-     *
-     * @return self
-     */
-    public function setInputRefIds($input_ref_ids)
-    {
-        $this->container['input_ref_ids'] = $input_ref_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets long_message
+     * Gets start_date
      *
      * @return string|null
      */
-    public function getLongMessage()
+    public function getStartDate()
     {
-        return $this->container['long_message'];
+        return $this->container['start_date'];
     }
 
     /**
-     * Sets long_message
+     * Sets start_date
      *
-     * @param string|null $long_message A more detailed explanation of the error than given in the message error field.
+     * @param string|null $start_date The start date of the date range used to calculate the report, in ISO 8601 format.
      *
      * @return self
      */
-    public function setLongMessage($long_message)
+    public function setStartDate($start_date)
     {
-        $this->container['long_message'] = $long_message;
+        $this->container['start_date'] = $start_date;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets warnings
      *
-     * @return string|null
+     * @return \Ebay\Sell\Analytics\Model\Error[]|null
      */
-    public function getMessage()
+    public function getWarnings()
     {
-        return $this->container['message'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets message
+     * Sets warnings
      *
-     * @param string|null $message Information on how to correct the problem, in the end user's terms and language where applicable. Its value is at most 50 characters long. If applicable, the value is localized in the end user's requested locale.
+     * @param \Ebay\Sell\Analytics\Model\Error[]|null $warnings An array of any process errors or warnings that were generated during the processing of the call processing.
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setWarnings($warnings)
     {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets output_ref_ids
-     *
-     * @return string[]|null
-     */
-    public function getOutputRefIds()
-    {
-        return $this->container['output_ref_ids'];
-    }
-
-    /**
-     * Sets output_ref_ids
-     *
-     * @param string[]|null $output_ref_ids Identifies specific response elements associated with the error, if any. Path format is the same as inputRefId.
-     *
-     * @return self
-     */
-    public function setOutputRefIds($output_ref_ids)
-    {
-        $this->container['output_ref_ids'] = $output_ref_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets parameters
-     *
-     * @return \Ebay\Sell\Analytics\Model\ErrorParameter[]|null
-     */
-    public function getParameters()
-    {
-        return $this->container['parameters'];
-    }
-
-    /**
-     * Sets parameters
-     *
-     * @param \Ebay\Sell\Analytics\Model\ErrorParameter[]|null $parameters This optional list of name/value pairs that contain context-specific ErrorParameter objects, with each item in the list being a parameter (or input field name) that caused an error condition. Each ErrorParameter object consists of two fields, a name and a value.
-     *
-     * @return self
-     */
-    public function setParameters($parameters)
-    {
-        $this->container['parameters'] = $parameters;
-
-        return $this;
-    }
-
-    /**
-     * Gets subdomain
-     *
-     * @return string|null
-     */
-    public function getSubdomain()
-    {
-        return $this->container['subdomain'];
-    }
-
-    /**
-     * Sets subdomain
-     *
-     * @param string|null $subdomain If present, indicates which subsystem in which the error occurred.
-     *
-     * @return self
-     */
-    public function setSubdomain($subdomain)
-    {
-        $this->container['subdomain'] = $subdomain;
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }
@@ -490,7 +430,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

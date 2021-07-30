@@ -1,11 +1,11 @@
 <?php
 /**
- * GetCustomerServiceMetricResponse
+ * Metadata
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * GetCustomerServiceMetricResponse Class Doc Comment
+ * Metadata Class Doc Comment
  *
  * @category Class
- * @description This complex data type defines the response data that is returned from a request to &lt;b&gt;getCustomerServiceMetric&lt;/b&gt;.  &lt;br&gt;&lt;br&gt;The &lt;b&gt;dimensionMetrics&lt;/b&gt; object contains the details of the dimension being measured and the calculated customer service metric values. &lt;br&gt;&lt;br&gt;The &lt;b&gt;evaluationCycle&lt;/b&gt; defines the period used to calculate the metric values.  &lt;br&gt;&lt;br&gt;The &lt;b&gt;marketplaceId&lt;/b&gt; is the eBay marketplace for which the metrics are being considered.
- * @package  Ebay\Sell
+ * @description Type the defines the metadata information of the report. This includes the headers and the individual metadata records.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetCustomerServiceMetricResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'GetCustomerServiceMetricResponse';
+    protected static $openAPIModelName = 'Metadata';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,9 +60,8 @@ class GetCustomerServiceMetricResponse implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dimension_metrics' => '\Ebay\Sell\Analytics\Model\DimensionMetric[]',
-        'evaluation_cycle' => '\Ebay\Sell\Analytics\Model\EvaluationCycle',
-        'marketplace_id' => 'string'
+        'metadata_header' => '\Ebay\Sell\Analytics\Model\MetadataHeader',
+        'metadata_records' => '\Ebay\Sell\Analytics\Model\MetadataRecord[]'
     ];
 
     /**
@@ -73,9 +72,8 @@ class GetCustomerServiceMetricResponse implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'dimension_metrics' => null,
-        'evaluation_cycle' => null,
-        'marketplace_id' => null
+        'metadata_header' => null,
+        'metadata_records' => null
     ];
 
     /**
@@ -105,9 +103,8 @@ class GetCustomerServiceMetricResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'dimension_metrics' => 'dimensionMetrics',
-        'evaluation_cycle' => 'evaluationCycle',
-        'marketplace_id' => 'marketplaceId'
+        'metadata_header' => 'metadataHeader',
+        'metadata_records' => 'metadataRecords'
     ];
 
     /**
@@ -116,9 +113,8 @@ class GetCustomerServiceMetricResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'dimension_metrics' => 'setDimensionMetrics',
-        'evaluation_cycle' => 'setEvaluationCycle',
-        'marketplace_id' => 'setMarketplaceId'
+        'metadata_header' => 'setMetadataHeader',
+        'metadata_records' => 'setMetadataRecords'
     ];
 
     /**
@@ -127,9 +123,8 @@ class GetCustomerServiceMetricResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'dimension_metrics' => 'getDimensionMetrics',
-        'evaluation_cycle' => 'getEvaluationCycle',
-        'marketplace_id' => 'getMarketplaceId'
+        'metadata_header' => 'getMetadataHeader',
+        'metadata_records' => 'getMetadataRecords'
     ];
 
     /**
@@ -189,9 +184,8 @@ class GetCustomerServiceMetricResponse implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['dimension_metrics'] = isset($data['dimension_metrics']) ? $data['dimension_metrics'] : null;
-        $this->container['evaluation_cycle'] = isset($data['evaluation_cycle']) ? $data['evaluation_cycle'] : null;
-        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['metadata_header'] = $data['metadata_header'] ?? null;
+        $this->container['metadata_records'] = $data['metadata_records'] ?? null;
     }
 
     /**
@@ -219,73 +213,49 @@ class GetCustomerServiceMetricResponse implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets dimension_metrics
+     * Gets metadata_header
      *
-     * @return \Ebay\Sell\Analytics\Model\DimensionMetric[]|null
+     * @return \Ebay\Sell\Analytics\Model\MetadataHeader|null
      */
-    public function getDimensionMetrics()
+    public function getMetadataHeader()
     {
-        return $this->container['dimension_metrics'];
+        return $this->container['metadata_header'];
     }
 
     /**
-     * Sets dimension_metrics
+     * Sets metadata_header
      *
-     * @param \Ebay\Sell\Analytics\Model\DimensionMetric[]|null $dimension_metrics This container provides a seller's customer service metric performance for a given dimension. In the getCustomerServiceMetric request, specify values for the following request parameters to control the returned dimension and the associated metric values: customer_service_metric_type evaluation_type evaluation_marketplace_id
+     * @param \Ebay\Sell\Analytics\Model\MetadataHeader|null $metadata_header metadata_header
      *
      * @return self
      */
-    public function setDimensionMetrics($dimension_metrics)
+    public function setMetadataHeader($metadata_header)
     {
-        $this->container['dimension_metrics'] = $dimension_metrics;
+        $this->container['metadata_header'] = $metadata_header;
 
         return $this;
     }
 
     /**
-     * Gets evaluation_cycle
+     * Gets metadata_records
      *
-     * @return \Ebay\Sell\Analytics\Model\EvaluationCycle|null
+     * @return \Ebay\Sell\Analytics\Model\MetadataRecord[]|null
      */
-    public function getEvaluationCycle()
+    public function getMetadataRecords()
     {
-        return $this->container['evaluation_cycle'];
+        return $this->container['metadata_records'];
     }
 
     /**
-     * Sets evaluation_cycle
+     * Sets metadata_records
      *
-     * @param \Ebay\Sell\Analytics\Model\EvaluationCycle|null $evaluation_cycle evaluation_cycle
+     * @param \Ebay\Sell\Analytics\Model\MetadataRecord[]|null $metadata_records A list of the individual report records.
      *
      * @return self
      */
-    public function setEvaluationCycle($evaluation_cycle)
+    public function setMetadataRecords($metadata_records)
     {
-        $this->container['evaluation_cycle'] = $evaluation_cycle;
-
-        return $this;
-    }
-
-    /**
-     * Gets marketplace_id
-     *
-     * @return string|null
-     */
-    public function getMarketplaceId()
-    {
-        return $this->container['marketplace_id'];
-    }
-
-    /**
-     * Sets marketplace_id
-     *
-     * @param string|null $marketplace_id The eBay marketplace ID of the marketplace upon which the customer service metric evaluation is based. The customer_service_metric resource supports a limited set of marketplaces. For a complete list of the supported marketplaces, please see the Service metrics policy page. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/analytics/types/bas:MarketplaceIdEnum'>eBay API documentation</a>
-     *
-     * @return self
-     */
-    public function setMarketplaceId($marketplace_id)
-    {
-        $this->container['marketplace_id'] = $marketplace_id;
+        $this->container['metadata_records'] = $metadata_records;
 
         return $this;
     }
@@ -310,7 +280,7 @@ class GetCustomerServiceMetricResponse implements ModelInterface, ArrayAccess, \
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

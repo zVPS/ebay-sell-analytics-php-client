@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,14 +29,14 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
  * Dimension Class Doc Comment
  *
  * @category Class
  * @description The fields in this complex type define the dimension, or attributes, by which the associated customer service metric and benchmark data is measured.  &lt;br&gt;&lt;br&gt;The value of &lt;b&gt;dimensionKey&lt;/b&gt; gets set according to the configuration of the input request. The &lt;b&gt;name&lt;/b&gt; and &lt;b&gt;value&lt;/b&gt; pair further define dimension under the key.
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
@@ -45,7 +45,7 @@ use \Ebay\Sell\ObjectSerializer;
  */
 class Dimension implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -189,9 +189,9 @@ class Dimension implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['dimension_key'] = isset($data['dimension_key']) ? $data['dimension_key'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['dimension_key'] = $data['dimension_key'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -310,7 +310,7 @@ class Dimension implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

@@ -4,7 +4,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Ebay\Sell\Analytics;
+namespace Ebay\Sell\Analytics\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -33,16 +33,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Ebay\Sell\ApiException;
-use Ebay\Sell\Configuration;
-use Ebay\Sell\HeaderSelector;
-use Ebay\Sell\ObjectSerializer;
+use Ebay\Sell\Analytics\ApiException;
+use Ebay\Sell\Analytics\Configuration;
+use Ebay\Sell\Analytics\HeaderSelector;
+use Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
  * SellerStandardsProfileApi Class Doc Comment
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -90,9 +90,8 @@ class SellerStandardsProfileApi
      * Set the host index
      *
      * @param int $hostIndex Host index (required)
-     * @return void
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -119,7 +118,7 @@ class SellerStandardsProfileApi
      * Operation findSellerStandardsProfiles
      *
      *
-     * @throws \Ebay\Sell\ApiException on non-2xx response
+     * @throws \Ebay\Sell\Analytics\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Ebay\Sell\Analytics\Model\FindSellerStandardsProfilesResponse
      */
@@ -133,7 +132,7 @@ class SellerStandardsProfileApi
      * Operation findSellerStandardsProfilesWithHttpInfo
      *
      *
-     * @throws \Ebay\Sell\ApiException on non-2xx response
+     * @throws \Ebay\Sell\Analytics\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Ebay\Sell\Analytics\Model\FindSellerStandardsProfilesResponse, HTTP status code, HTTP response headers (array of strings)
      */
@@ -362,7 +361,7 @@ class SellerStandardsProfileApi
      * @param  string $cycle The period covered by the returned standards profile evaluation. Supply one of two values, CURRENT means the response reflects eBay&#39;s most recent monthly standards evaluation and PROJECTED means the response reflect the seller&#39;s projected monthly evaluation, as calculated at the time of the request. (required)
      * @param  string $program This input value specifies the region used to determine the seller&#39;s standards profile. Supply one of the four following values, PROGRAM_DE, PROGRAM_UK, PROGRAM_US, or PROGRAM_GLOBAL. (required)
      *
-     * @throws \Ebay\Sell\ApiException on non-2xx response
+     * @throws \Ebay\Sell\Analytics\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Ebay\Sell\Analytics\Model\StandardsProfile
      */
@@ -378,7 +377,7 @@ class SellerStandardsProfileApi
      * @param  string $cycle The period covered by the returned standards profile evaluation. Supply one of two values, CURRENT means the response reflects eBay&#39;s most recent monthly standards evaluation and PROJECTED means the response reflect the seller&#39;s projected monthly evaluation, as calculated at the time of the request. (required)
      * @param  string $program This input value specifies the region used to determine the seller&#39;s standards profile. Supply one of the four following values, PROGRAM_DE, PROGRAM_UK, PROGRAM_US, or PROGRAM_GLOBAL. (required)
      *
-     * @throws \Ebay\Sell\ApiException on non-2xx response
+     * @throws \Ebay\Sell\Analytics\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Ebay\Sell\Analytics\Model\StandardsProfile, HTTP status code, HTTP response headers (array of strings)
      */

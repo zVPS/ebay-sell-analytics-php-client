@@ -1,11 +1,11 @@
 <?php
 /**
- * Cycle
+ * ErrorParameter
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * Cycle Class Doc Comment
+ * ErrorParameter Class Doc Comment
  *
  * @category Class
- * @description A complex type that describes a program cycle.
- * @package  Ebay\Sell
+ * @description A complex type that defines an error and error message.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Cycle implements ModelInterface, ArrayAccess, \JsonSerializable
+class ErrorParameter implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Cycle';
+    protected static $openAPIModelName = 'ErrorParameter';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,9 +60,8 @@ class Cycle implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'cycle_type' => 'string',
-        'evaluation_date' => 'string',
-        'evaluation_month' => 'string'
+        'name' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -73,9 +72,8 @@ class Cycle implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'cycle_type' => null,
-        'evaluation_date' => null,
-        'evaluation_month' => null
+        'name' => null,
+        'value' => null
     ];
 
     /**
@@ -105,9 +103,8 @@ class Cycle implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'cycle_type' => 'cycleType',
-        'evaluation_date' => 'evaluationDate',
-        'evaluation_month' => 'evaluationMonth'
+        'name' => 'name',
+        'value' => 'value'
     ];
 
     /**
@@ -116,9 +113,8 @@ class Cycle implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'cycle_type' => 'setCycleType',
-        'evaluation_date' => 'setEvaluationDate',
-        'evaluation_month' => 'setEvaluationMonth'
+        'name' => 'setName',
+        'value' => 'setValue'
     ];
 
     /**
@@ -127,9 +123,8 @@ class Cycle implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'cycle_type' => 'getCycleType',
-        'evaluation_date' => 'getEvaluationDate',
-        'evaluation_month' => 'getEvaluationMonth'
+        'name' => 'getName',
+        'value' => 'getValue'
     ];
 
     /**
@@ -189,9 +184,8 @@ class Cycle implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['cycle_type'] = isset($data['cycle_type']) ? $data['cycle_type'] : null;
-        $this->container['evaluation_date'] = isset($data['evaluation_date']) ? $data['evaluation_date'] : null;
-        $this->container['evaluation_month'] = isset($data['evaluation_month']) ? $data['evaluation_month'] : null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -219,73 +213,49 @@ class Cycle implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets cycle_type
+     * Gets name
      *
      * @return string|null
      */
-    public function getCycleType()
+    public function getName()
     {
-        return $this->container['cycle_type'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets cycle_type
+     * Sets name
      *
-     * @param string|null $cycle_type The cycle type, either CURRENT or PROJECTED. CURRENT means the profile's metrics values are from the most recent official eBay monthly standards evaluation. PROJECTED means the profile values were determined when the profile was requested. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/analytics/types/ssp:CycleTypeEnum'>eBay API documentation</a>
+     * @param string|null $name Name of the entity that threw the error.
      *
      * @return self
      */
-    public function setCycleType($cycle_type)
+    public function setName($name)
     {
-        $this->container['cycle_type'] = $cycle_type;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets evaluation_date
+     * Gets value
      *
      * @return string|null
      */
-    public function getEvaluationDate()
+    public function getValue()
     {
-        return $this->container['evaluation_date'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets evaluation_date
+     * Sets value
      *
-     * @param string|null $evaluation_date The date and time at which the standard compliance values were determined for the profile. The time stamp is formatted as an ISO 8601 string, which is based on the 24-hour Universal Coordinated Time (UTC) clock. Format: [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss].[sss]Z Example: 2018-08-04T07:09:00.000Z
+     * @param string|null $value A description of the error.
      *
      * @return self
      */
-    public function setEvaluationDate($evaluation_date)
+    public function setValue($value)
     {
-        $this->container['evaluation_date'] = $evaluation_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets evaluation_month
-     *
-     * @return string|null
-     */
-    public function getEvaluationMonth()
-    {
-        return $this->container['evaluation_month'];
-    }
-
-    /**
-     * Sets evaluation_month
-     *
-     * @param string|null $evaluation_month The month in which the currently effective seller level was computed. The value is always formatted as YYYY-MM. If the cycle is CURRENT, this value is the month and year the of the last eBay compliance evaluation. If this is for a PROJECTED cycle, the value is the month and year of the next scheduled evaluation. Because eBay does official evaluations around the 20th of each month, a PROJECTED value may indicate either the current or the next month.
-     *
-     * @return self
-     */
-    public function setEvaluationMonth($evaluation_month)
-    {
-        $this->container['evaluation_month'] = $evaluation_month;
+        $this->container['value'] = $value;
 
         return $this;
     }
@@ -310,7 +280,7 @@ class Cycle implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

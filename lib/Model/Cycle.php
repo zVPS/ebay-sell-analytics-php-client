@@ -1,11 +1,11 @@
 <?php
 /**
- * Header
+ * Cycle
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * Header Class Doc Comment
+ * Cycle Class Doc Comment
  *
  * @category Class
- * @description Type that defines the headers for the dimension keys and metrics returned in the report.
- * @package  Ebay\Sell
+ * @description A complex type that describes a program cycle.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Header implements ModelInterface, ArrayAccess, \JsonSerializable
+class Cycle implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Header';
+    protected static $openAPIModelName = 'Cycle';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,9 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dimension_keys' => '\Ebay\Sell\Analytics\Model\Definition[]',
-        'metrics' => '\Ebay\Sell\Analytics\Model\Definition[]'
+        'cycle_type' => 'string',
+        'evaluation_date' => 'string',
+        'evaluation_month' => 'string'
     ];
 
     /**
@@ -72,8 +73,9 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'dimension_keys' => null,
-        'metrics' => null
+        'cycle_type' => null,
+        'evaluation_date' => null,
+        'evaluation_month' => null
     ];
 
     /**
@@ -103,8 +105,9 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'dimension_keys' => 'dimensionKeys',
-        'metrics' => 'metrics'
+        'cycle_type' => 'cycleType',
+        'evaluation_date' => 'evaluationDate',
+        'evaluation_month' => 'evaluationMonth'
     ];
 
     /**
@@ -113,8 +116,9 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'dimension_keys' => 'setDimensionKeys',
-        'metrics' => 'setMetrics'
+        'cycle_type' => 'setCycleType',
+        'evaluation_date' => 'setEvaluationDate',
+        'evaluation_month' => 'setEvaluationMonth'
     ];
 
     /**
@@ -123,8 +127,9 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'dimension_keys' => 'getDimensionKeys',
-        'metrics' => 'getMetrics'
+        'cycle_type' => 'getCycleType',
+        'evaluation_date' => 'getEvaluationDate',
+        'evaluation_month' => 'getEvaluationMonth'
     ];
 
     /**
@@ -184,8 +189,9 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['dimension_keys'] = isset($data['dimension_keys']) ? $data['dimension_keys'] : null;
-        $this->container['metrics'] = isset($data['metrics']) ? $data['metrics'] : null;
+        $this->container['cycle_type'] = $data['cycle_type'] ?? null;
+        $this->container['evaluation_date'] = $data['evaluation_date'] ?? null;
+        $this->container['evaluation_month'] = $data['evaluation_month'] ?? null;
     }
 
     /**
@@ -213,49 +219,73 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets dimension_keys
+     * Gets cycle_type
      *
-     * @return \Ebay\Sell\Analytics\Model\Definition[]|null
+     * @return string|null
      */
-    public function getDimensionKeys()
+    public function getCycleType()
     {
-        return $this->container['dimension_keys'];
+        return $this->container['cycle_type'];
     }
 
     /**
-     * Sets dimension_keys
+     * Sets cycle_type
      *
-     * @param \Ebay\Sell\Analytics\Model\Definition[]|null $dimension_keys A list of the dimension or metric keys returned in the report. The values for each are is returned in the associated key fields.
+     * @param string|null $cycle_type The cycle type, either CURRENT or PROJECTED. CURRENT means the profile's metrics values are from the most recent official eBay monthly standards evaluation. PROJECTED means the profile values were determined when the profile was requested. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/analytics/types/ssp:CycleTypeEnum'>eBay API documentation</a>
      *
      * @return self
      */
-    public function setDimensionKeys($dimension_keys)
+    public function setCycleType($cycle_type)
     {
-        $this->container['dimension_keys'] = $dimension_keys;
+        $this->container['cycle_type'] = $cycle_type;
 
         return $this;
     }
 
     /**
-     * Gets metrics
+     * Gets evaluation_date
      *
-     * @return \Ebay\Sell\Analytics\Model\Definition[]|null
+     * @return string|null
      */
-    public function getMetrics()
+    public function getEvaluationDate()
     {
-        return $this->container['metrics'];
+        return $this->container['evaluation_date'];
     }
 
     /**
-     * Sets metrics
+     * Sets evaluation_date
      *
-     * @param \Ebay\Sell\Analytics\Model\Definition[]|null $metrics The list of metrics returned in the report. The values for each are is returned in the associated key fields.
+     * @param string|null $evaluation_date The date and time at which the standard compliance values were determined for the profile. The time stamp is formatted as an ISO 8601 string, which is based on the 24-hour Universal Coordinated Time (UTC) clock. Format: [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss].[sss]Z Example: 2018-08-04T07:09:00.000Z
      *
      * @return self
      */
-    public function setMetrics($metrics)
+    public function setEvaluationDate($evaluation_date)
     {
-        $this->container['metrics'] = $metrics;
+        $this->container['evaluation_date'] = $evaluation_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets evaluation_month
+     *
+     * @return string|null
+     */
+    public function getEvaluationMonth()
+    {
+        return $this->container['evaluation_month'];
+    }
+
+    /**
+     * Sets evaluation_month
+     *
+     * @param string|null $evaluation_month The month in which the currently effective seller level was computed. The value is always formatted as YYYY-MM. If the cycle is CURRENT, this value is the month and year the of the last eBay compliance evaluation. If this is for a PROJECTED cycle, the value is the month and year of the next scheduled evaluation. Because eBay does official evaluations around the 20th of each month, a PROJECTED value may indicate either the current or the next month.
+     *
+     * @return self
+     */
+    public function setEvaluationMonth($evaluation_month)
+    {
+        $this->container['evaluation_month'] = $evaluation_month;
 
         return $this;
     }
@@ -280,7 +310,7 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

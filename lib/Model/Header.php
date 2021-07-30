@@ -1,11 +1,11 @@
 <?php
 /**
- * MetadataRecord
+ * Header
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * MetadataRecord Class Doc Comment
+ * Header Class Doc Comment
  *
  * @category Class
- * @description A complex type that defines the data records returned in the report.
- * @package  Ebay\Sell
+ * @description Type that defines the headers for the dimension keys and metrics returned in the report.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class MetadataRecord implements ModelInterface, ArrayAccess, \JsonSerializable
+class Header implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MetadataRecord';
+    protected static $openAPIModelName = 'Header';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,8 @@ class MetadataRecord implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'metadata_values' => '\Ebay\Sell\Analytics\Model\Value[]',
-        'value' => '\Ebay\Sell\Analytics\Model\Value'
+        'dimension_keys' => '\Ebay\Sell\Analytics\Model\Definition[]',
+        'metrics' => '\Ebay\Sell\Analytics\Model\Definition[]'
     ];
 
     /**
@@ -72,8 +72,8 @@ class MetadataRecord implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'metadata_values' => null,
-        'value' => null
+        'dimension_keys' => null,
+        'metrics' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class MetadataRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'metadata_values' => 'metadataValues',
-        'value' => 'value'
+        'dimension_keys' => 'dimensionKeys',
+        'metrics' => 'metrics'
     ];
 
     /**
@@ -113,8 +113,8 @@ class MetadataRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'metadata_values' => 'setMetadataValues',
-        'value' => 'setValue'
+        'dimension_keys' => 'setDimensionKeys',
+        'metrics' => 'setMetrics'
     ];
 
     /**
@@ -123,8 +123,8 @@ class MetadataRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'metadata_values' => 'getMetadataValues',
-        'value' => 'getValue'
+        'dimension_keys' => 'getDimensionKeys',
+        'metrics' => 'getMetrics'
     ];
 
     /**
@@ -184,8 +184,8 @@ class MetadataRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['metadata_values'] = isset($data['metadata_values']) ? $data['metadata_values'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['dimension_keys'] = $data['dimension_keys'] ?? null;
+        $this->container['metrics'] = $data['metrics'] ?? null;
     }
 
     /**
@@ -213,49 +213,49 @@ class MetadataRecord implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets metadata_values
+     * Gets dimension_keys
      *
-     * @return \Ebay\Sell\Analytics\Model\Value[]|null
+     * @return \Ebay\Sell\Analytics\Model\Definition[]|null
      */
-    public function getMetadataValues()
+    public function getDimensionKeys()
     {
-        return $this->container['metadata_values'];
+        return $this->container['dimension_keys'];
     }
 
     /**
-     * Sets metadata_values
+     * Sets dimension_keys
      *
-     * @param \Ebay\Sell\Analytics\Model\Value[]|null $metadata_values A list of data in a row returned in the traffic report. The data in each of the cells match the labels in headers of the report.
+     * @param \Ebay\Sell\Analytics\Model\Definition[]|null $dimension_keys A list of the dimension or metric keys returned in the report. The values for each are is returned in the associated key fields.
      *
      * @return self
      */
-    public function setMetadataValues($metadata_values)
+    public function setDimensionKeys($dimension_keys)
     {
-        $this->container['metadata_values'] = $metadata_values;
+        $this->container['dimension_keys'] = $dimension_keys;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets metrics
      *
-     * @return \Ebay\Sell\Analytics\Model\Value|null
+     * @return \Ebay\Sell\Analytics\Model\Definition[]|null
      */
-    public function getValue()
+    public function getMetrics()
     {
-        return $this->container['value'];
+        return $this->container['metrics'];
     }
 
     /**
-     * Sets value
+     * Sets metrics
      *
-     * @param \Ebay\Sell\Analytics\Model\Value|null $value value
+     * @param \Ebay\Sell\Analytics\Model\Definition[]|null $metrics The list of metrics returned in the report. The values for each are is returned in the associated key fields.
      *
      * @return self
      */
-    public function setValue($value)
+    public function setMetrics($metrics)
     {
-        $this->container['value'] = $value;
+        $this->container['metrics'] = $metrics;
 
         return $this;
     }
@@ -280,7 +280,7 @@ class MetadataRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

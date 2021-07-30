@@ -1,11 +1,11 @@
 <?php
 /**
- * Definition
+ * FindSellerStandardsProfilesResponse
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * Definition Class Doc Comment
+ * FindSellerStandardsProfilesResponse Class Doc Comment
  *
  * @category Class
- * @description A complex type that defines a dimension key and metrics in a traffic report.
- * @package  Ebay\Sell
+ * @description The response container for a list of seller profiles.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Definition implements ModelInterface, ArrayAccess, \JsonSerializable
+class FindSellerStandardsProfilesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Definition';
+    protected static $openAPIModelName = 'FindSellerStandardsProfilesResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,9 +60,7 @@ class Definition implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data_type' => 'string',
-        'key' => 'string',
-        'localized_name' => 'string'
+        'standards_profiles' => '\Ebay\Sell\Analytics\Model\StandardsProfile[]'
     ];
 
     /**
@@ -73,9 +71,7 @@ class Definition implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data_type' => null,
-        'key' => null,
-        'localized_name' => null
+        'standards_profiles' => null
     ];
 
     /**
@@ -105,9 +101,7 @@ class Definition implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'data_type' => 'dataType',
-        'key' => 'key',
-        'localized_name' => 'localizedName'
+        'standards_profiles' => 'standardsProfiles'
     ];
 
     /**
@@ -116,9 +110,7 @@ class Definition implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'data_type' => 'setDataType',
-        'key' => 'setKey',
-        'localized_name' => 'setLocalizedName'
+        'standards_profiles' => 'setStandardsProfiles'
     ];
 
     /**
@@ -127,9 +119,7 @@ class Definition implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'data_type' => 'getDataType',
-        'key' => 'getKey',
-        'localized_name' => 'getLocalizedName'
+        'standards_profiles' => 'getStandardsProfiles'
     ];
 
     /**
@@ -189,9 +179,7 @@ class Definition implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['data_type'] = isset($data['data_type']) ? $data['data_type'] : null;
-        $this->container['key'] = isset($data['key']) ? $data['key'] : null;
-        $this->container['localized_name'] = isset($data['localized_name']) ? $data['localized_name'] : null;
+        $this->container['standards_profiles'] = $data['standards_profiles'] ?? null;
     }
 
     /**
@@ -219,73 +207,25 @@ class Definition implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets data_type
+     * Gets standards_profiles
      *
-     * @return string|null
+     * @return \Ebay\Sell\Analytics\Model\StandardsProfile[]|null
      */
-    public function getDataType()
+    public function getStandardsProfiles()
     {
-        return $this->container['data_type'];
+        return $this->container['standards_profiles'];
     }
 
     /**
-     * Sets data_type
+     * Sets standards_profiles
      *
-     * @param string|null $data_type Indicates the data type of the returned dimension. For example, if the dimension is day, the data type is DATE. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/analytics/types/ssp:DataTypeEnum'>eBay API documentation</a>
+     * @param \Ebay\Sell\Analytics\Model\StandardsProfile[]|null $standards_profiles A list of the seller's standards profiles. A &quot;standards profile&quot; is a set of eBay seller standards categories and the values related to the associated seller. Profiles are distinguished by a combination of cycle and program values. The &quot;program&quot; value specifies the region to which the data is from. The &quot;cycle&quot; value specifies whether the values were determined just now, or if the values are from the last official eBay seller standards evaluation.
      *
      * @return self
      */
-    public function setDataType($data_type)
+    public function setStandardsProfiles($standards_profiles)
     {
-        $this->container['data_type'] = $data_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets key
-     *
-     * @return string|null
-     */
-    public function getKey()
-    {
-        return $this->container['key'];
-    }
-
-    /**
-     * Sets key
-     *
-     * @param string|null $key The value the dimension or metric parameter as submitted in the request.
-     *
-     * @return self
-     */
-    public function setKey($key)
-    {
-        $this->container['key'] = $key;
-
-        return $this;
-    }
-
-    /**
-     * Gets localized_name
-     *
-     * @return string|null
-     */
-    public function getLocalizedName()
-    {
-        return $this->container['localized_name'];
-    }
-
-    /**
-     * Sets localized_name
-     *
-     * @param string|null $localized_name The localized name of the metric or dimension (translated into the language specified in the Accept-Language HTTP request header). For example, if Accept-Language is set to de-DE, the value &quot;day&quot; in the dimension container is returned as &quot;tag&quot;, and a metric of TRANSACTION is returned as &quot;Transaktionsanzahl&quot;.
-     *
-     * @return self
-     */
-    public function setLocalizedName($localized_name)
-    {
-        $this->container['localized_name'] = $localized_name;
+        $this->container['standards_profiles'] = $standards_profiles;
 
         return $this;
     }
@@ -310,7 +250,7 @@ class Definition implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

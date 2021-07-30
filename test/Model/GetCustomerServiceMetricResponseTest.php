@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace Ebay\Sell\Test\Model;
+namespace Ebay\Sell\Analytics\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description This complex data type defines the response data that is returned from a request to &lt;b&gt;getCustomerServiceMetric&lt;/b&gt;.  &lt;br&gt;&lt;br&gt;The &lt;b&gt;dimensionMetrics&lt;/b&gt; object contains the details of the dimension being measured and the calculated customer service metric values. &lt;br&gt;&lt;br&gt;The &lt;b&gt;evaluationCycle&lt;/b&gt; defines the period used to calculate the metric values.  &lt;br&gt;&lt;br&gt;The &lt;b&gt;marketplaceId&lt;/b&gt; is the eBay marketplace for which the metrics are being considered.
- * @package     Ebay\Sell
+ * @package     Ebay\Sell\Analytics
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

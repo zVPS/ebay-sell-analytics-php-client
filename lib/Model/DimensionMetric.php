@@ -1,11 +1,11 @@
 <?php
 /**
- * Metric
+ * DimensionMetric
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * Metric Class Doc Comment
+ * DimensionMetric Class Doc Comment
  *
  * @category Class
- * @description This complex data type defines the details of the customer service metric and benchmark data related to the associated &lt;b&gt;dimension&lt;/b&gt;.
- * @package  Ebay\Sell
+ * @description This complex type defines a the customer service metrics and seller benchmark performance related to  a given dimension.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Metric implements ModelInterface, ArrayAccess, \JsonSerializable
+class DimensionMetric implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Metric';
+    protected static $openAPIModelName = 'DimensionMetric';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,8 @@ class Metric implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'benchmark' => '\Ebay\Sell\Analytics\Model\MetricBenchmark',
-        'distributions' => '\Ebay\Sell\Analytics\Model\MetricDistribution[]',
-        'metric_key' => 'string',
-        'value' => 'string'
+        'dimension' => '\Ebay\Sell\Analytics\Model\Dimension',
+        'metrics' => '\Ebay\Sell\Analytics\Model\Metric[]'
     ];
 
     /**
@@ -74,10 +72,8 @@ class Metric implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'benchmark' => null,
-        'distributions' => null,
-        'metric_key' => null,
-        'value' => null
+        'dimension' => null,
+        'metrics' => null
     ];
 
     /**
@@ -107,10 +103,8 @@ class Metric implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'benchmark' => 'benchmark',
-        'distributions' => 'distributions',
-        'metric_key' => 'metricKey',
-        'value' => 'value'
+        'dimension' => 'dimension',
+        'metrics' => 'metrics'
     ];
 
     /**
@@ -119,10 +113,8 @@ class Metric implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'benchmark' => 'setBenchmark',
-        'distributions' => 'setDistributions',
-        'metric_key' => 'setMetricKey',
-        'value' => 'setValue'
+        'dimension' => 'setDimension',
+        'metrics' => 'setMetrics'
     ];
 
     /**
@@ -131,10 +123,8 @@ class Metric implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'benchmark' => 'getBenchmark',
-        'distributions' => 'getDistributions',
-        'metric_key' => 'getMetricKey',
-        'value' => 'getValue'
+        'dimension' => 'getDimension',
+        'metrics' => 'getMetrics'
     ];
 
     /**
@@ -194,10 +184,8 @@ class Metric implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['benchmark'] = isset($data['benchmark']) ? $data['benchmark'] : null;
-        $this->container['distributions'] = isset($data['distributions']) ? $data['distributions'] : null;
-        $this->container['metric_key'] = isset($data['metric_key']) ? $data['metric_key'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['dimension'] = $data['dimension'] ?? null;
+        $this->container['metrics'] = $data['metrics'] ?? null;
     }
 
     /**
@@ -225,97 +213,49 @@ class Metric implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets benchmark
+     * Gets dimension
      *
-     * @return \Ebay\Sell\Analytics\Model\MetricBenchmark|null
+     * @return \Ebay\Sell\Analytics\Model\Dimension|null
      */
-    public function getBenchmark()
+    public function getDimension()
     {
-        return $this->container['benchmark'];
+        return $this->container['dimension'];
     }
 
     /**
-     * Sets benchmark
+     * Sets dimension
      *
-     * @param \Ebay\Sell\Analytics\Model\MetricBenchmark|null $benchmark benchmark
+     * @param \Ebay\Sell\Analytics\Model\Dimension|null $dimension dimension
      *
      * @return self
      */
-    public function setBenchmark($benchmark)
+    public function setDimension($dimension)
     {
-        $this->container['benchmark'] = $benchmark;
+        $this->container['dimension'] = $dimension;
 
         return $this;
     }
 
     /**
-     * Gets distributions
+     * Gets metrics
      *
-     * @return \Ebay\Sell\Analytics\Model\MetricDistribution[]|null
+     * @return \Ebay\Sell\Analytics\Model\Metric[]|null
      */
-    public function getDistributions()
+    public function getMetrics()
     {
-        return $this->container['distributions'];
+        return $this->container['metrics'];
     }
 
     /**
-     * Sets distributions
+     * Sets metrics
      *
-     * @param \Ebay\Sell\Analytics\Model\MetricDistribution[]|null $distributions Returned when metricKey equals COUNT, this field returns an array of seller data where each set of data is grouped according by an overarching basis. When the seller distribution is returned, the numeric value of the associated value container equals the sum of the transactions where the seller meets the criteria of the customer service metric type for the given dimension during the evaluationCycle.
+     * @param \Ebay\Sell\Analytics\Model\Metric[]|null $metrics This is a list of Metric elements where each element contains data and information related to the transactions grouped by the associated dimension.
      *
      * @return self
      */
-    public function setDistributions($distributions)
+    public function setMetrics($metrics)
     {
-        $this->container['distributions'] = $distributions;
-
-        return $this;
-    }
-
-    /**
-     * Gets metric_key
-     *
-     * @return string|null
-     */
-    public function getMetricKey()
-    {
-        return $this->container['metric_key'];
-    }
-
-    /**
-     * Sets metric_key
-     *
-     * @param string|null $metric_key This field indicates the customer service metric being returned in the associated metrics container. The field is set as follows: TRANSACTION_COUNT &ndash; When set to this value, the associated value field equals the total number of transactions completed in the seller group for the metric in the given dimension during the associated evaluationCycle. COUNT &ndash; When set to this value, the associated value field is set to the total number of transactions the seller completed that meet the criteria of the customer service metric type for the given dimension that occurred during the evaluationCycle. RATE &ndash; When set to this value, the value of the associated value field is the rate of the customer service metric type in the given dimension during the associated evaluationCycle. Specifically, when metricKey is set to RATE, the associated value field is set to the value of metricKey TRANSACTION_COUNT divided by the value of metricKey COUNT. The returned benchmark.rating for the seller is based on this calculated value.
-     *
-     * @return self
-     */
-    public function setMetricKey($metric_key)
-    {
-        $this->container['metric_key'] = $metric_key;
-
-        return $this;
-    }
-
-    /**
-     * Gets value
-     *
-     * @return string|null
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param string|null $value This field is set to the seller's numeric rating for the associated metricKey for the given dimension during the evaluationCycle. To determine the seller's rating for this metric, the value of this field is compared to the average metric value of the group.
-     *
-     * @return self
-     */
-    public function setValue($value)
-    {
-        $this->container['value'] = $value;
+        $this->container['metrics'] = $metrics;
 
         return $this;
     }
@@ -340,7 +280,7 @@ class Metric implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

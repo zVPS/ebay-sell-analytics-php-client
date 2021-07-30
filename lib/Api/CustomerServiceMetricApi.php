@@ -4,7 +4,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Ebay\Sell\Analytics;
+namespace Ebay\Sell\Analytics\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -33,16 +33,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Ebay\Sell\ApiException;
-use Ebay\Sell\Configuration;
-use Ebay\Sell\HeaderSelector;
-use Ebay\Sell\ObjectSerializer;
+use Ebay\Sell\Analytics\ApiException;
+use Ebay\Sell\Analytics\Configuration;
+use Ebay\Sell\Analytics\HeaderSelector;
+use Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
  * CustomerServiceMetricApi Class Doc Comment
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -90,9 +90,8 @@ class CustomerServiceMetricApi
      * Set the host index
      *
      * @param int $hostIndex Host index (required)
-     * @return void
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -122,7 +121,7 @@ class CustomerServiceMetricApi
      * @param  string $evaluation_marketplace_id Use this query parameter to specify the Marketplace ID to evaluate for the customer service metrics and benchmark data. For the list of supported marketplaces, see Analytics API requirements and restrictions. For implementation help, refer to eBay API documentation at https://developer.ebay.com/api-docs/sell/analytics/types/bas:MarketplaceIdEnum (required)
      * @param  string $evaluation_type Use this path parameter to specify the type of the seller evaluation you want returned, either: CURRENT &amp;ndash; A monthly evaluation that occurs on the 20th of every month. PROJECTED &amp;ndash; A daily evaluation that provides a projection of how the seller is currently performing with regards to the upcoming evaluation period. (required)
      *
-     * @throws \Ebay\Sell\ApiException on non-2xx response
+     * @throws \Ebay\Sell\Analytics\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Ebay\Sell\Analytics\Model\GetCustomerServiceMetricResponse
      */
@@ -139,7 +138,7 @@ class CustomerServiceMetricApi
      * @param  string $evaluation_marketplace_id Use this query parameter to specify the Marketplace ID to evaluate for the customer service metrics and benchmark data. For the list of supported marketplaces, see Analytics API requirements and restrictions. For implementation help, refer to eBay API documentation at https://developer.ebay.com/api-docs/sell/analytics/types/bas:MarketplaceIdEnum (required)
      * @param  string $evaluation_type Use this path parameter to specify the type of the seller evaluation you want returned, either: CURRENT &amp;ndash; A monthly evaluation that occurs on the 20th of every month. PROJECTED &amp;ndash; A daily evaluation that provides a projection of how the seller is currently performing with regards to the upcoming evaluation period. (required)
      *
-     * @throws \Ebay\Sell\ApiException on non-2xx response
+     * @throws \Ebay\Sell\Analytics\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Ebay\Sell\Analytics\Model\GetCustomerServiceMetricResponse, HTTP status code, HTTP response headers (array of strings)
      */

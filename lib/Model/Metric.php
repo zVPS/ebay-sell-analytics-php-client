@@ -1,11 +1,11 @@
 <?php
 /**
- * MetricBenchmark
+ * Metric
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * MetricBenchmark Class Doc Comment
+ * Metric Class Doc Comment
  *
  * @category Class
- * @description This complex type defines the benchmark data, which includes the &lt;b&gt;average&lt;/b&gt; value of the metric for the group (the benchmark) and the seller&#39;s overall &lt;b&gt;rating&lt;/b&gt; when compared to the benchmark.
- * @package  Ebay\Sell
+ * @description This complex data type defines the details of the customer service metric and benchmark data related to the associated &lt;b&gt;dimension&lt;/b&gt;.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class MetricBenchmark implements ModelInterface, ArrayAccess, \JsonSerializable
+class Metric implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MetricBenchmark';
+    protected static $openAPIModelName = 'Metric';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,10 @@ class MetricBenchmark implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'adjustment' => 'string',
-        'basis' => 'string',
-        'metadata' => '\Ebay\Sell\Analytics\Model\BenchmarkMetadata',
-        'rating' => 'string'
+        'benchmark' => '\Ebay\Sell\Analytics\Model\MetricBenchmark',
+        'distributions' => '\Ebay\Sell\Analytics\Model\MetricDistribution[]',
+        'metric_key' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -74,10 +74,10 @@ class MetricBenchmark implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'adjustment' => null,
-        'basis' => null,
-        'metadata' => null,
-        'rating' => null
+        'benchmark' => null,
+        'distributions' => null,
+        'metric_key' => null,
+        'value' => null
     ];
 
     /**
@@ -107,10 +107,10 @@ class MetricBenchmark implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'adjustment' => 'adjustment',
-        'basis' => 'basis',
-        'metadata' => 'metadata',
-        'rating' => 'rating'
+        'benchmark' => 'benchmark',
+        'distributions' => 'distributions',
+        'metric_key' => 'metricKey',
+        'value' => 'value'
     ];
 
     /**
@@ -119,10 +119,10 @@ class MetricBenchmark implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'adjustment' => 'setAdjustment',
-        'basis' => 'setBasis',
-        'metadata' => 'setMetadata',
-        'rating' => 'setRating'
+        'benchmark' => 'setBenchmark',
+        'distributions' => 'setDistributions',
+        'metric_key' => 'setMetricKey',
+        'value' => 'setValue'
     ];
 
     /**
@@ -131,10 +131,10 @@ class MetricBenchmark implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'adjustment' => 'getAdjustment',
-        'basis' => 'getBasis',
-        'metadata' => 'getMetadata',
-        'rating' => 'getRating'
+        'benchmark' => 'getBenchmark',
+        'distributions' => 'getDistributions',
+        'metric_key' => 'getMetricKey',
+        'value' => 'getValue'
     ];
 
     /**
@@ -194,10 +194,10 @@ class MetricBenchmark implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['adjustment'] = isset($data['adjustment']) ? $data['adjustment'] : null;
-        $this->container['basis'] = isset($data['basis']) ? $data['basis'] : null;
-        $this->container['metadata'] = isset($data['metadata']) ? $data['metadata'] : null;
-        $this->container['rating'] = isset($data['rating']) ? $data['rating'] : null;
+        $this->container['benchmark'] = $data['benchmark'] ?? null;
+        $this->container['distributions'] = $data['distributions'] ?? null;
+        $this->container['metric_key'] = $data['metric_key'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -225,97 +225,97 @@ class MetricBenchmark implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets adjustment
+     * Gets benchmark
      *
-     * @return string|null
+     * @return \Ebay\Sell\Analytics\Model\MetricBenchmark|null
      */
-    public function getAdjustment()
+    public function getBenchmark()
     {
-        return $this->container['adjustment'];
+        return $this->container['benchmark'];
     }
 
     /**
-     * Sets adjustment
+     * Sets benchmark
      *
-     * @param string|null $adjustment If this field is present, it indicates that the rating given to the seller was &quot;adjusted&quot; for one reason or another. If eBay determines that the normal rating of a seller is impacted by circumstances beyond their control, they can issue an override to adjust the rating given to the seller. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/analytics/types/api:RatingAdjustmentTypeEnum'>eBay API documentation</a>
+     * @param \Ebay\Sell\Analytics\Model\MetricBenchmark|null $benchmark benchmark
      *
      * @return self
      */
-    public function setAdjustment($adjustment)
+    public function setBenchmark($benchmark)
     {
-        $this->container['adjustment'] = $adjustment;
+        $this->container['benchmark'] = $benchmark;
 
         return $this;
     }
 
     /**
-     * Gets basis
+     * Gets distributions
      *
-     * @return string|null
+     * @return \Ebay\Sell\Analytics\Model\MetricDistribution[]|null
      */
-    public function getBasis()
+    public function getDistributions()
     {
-        return $this->container['basis'];
+        return $this->container['distributions'];
     }
 
     /**
-     * Sets basis
+     * Sets distributions
      *
-     * @param string|null $basis This field returns the &quot;basis&quot; by which the benchmark is calculated for the customer service metric type. Currently, the only supported basis is PEER_BENCHMARK. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/analytics/types/api:BenchmarkTypeEnum'>eBay API documentation</a>
+     * @param \Ebay\Sell\Analytics\Model\MetricDistribution[]|null $distributions Returned when metricKey equals COUNT, this field returns an array of seller data where each set of data is grouped according by an overarching basis. When the seller distribution is returned, the numeric value of the associated value container equals the sum of the transactions where the seller meets the criteria of the customer service metric type for the given dimension during the evaluationCycle.
      *
      * @return self
      */
-    public function setBasis($basis)
+    public function setDistributions($distributions)
     {
-        $this->container['basis'] = $basis;
+        $this->container['distributions'] = $distributions;
 
         return $this;
     }
 
     /**
-     * Gets metadata
+     * Gets metric_key
      *
-     * @return \Ebay\Sell\Analytics\Model\BenchmarkMetadata|null
+     * @return string|null
      */
-    public function getMetadata()
+    public function getMetricKey()
     {
-        return $this->container['metadata'];
+        return $this->container['metric_key'];
     }
 
     /**
-     * Sets metadata
+     * Sets metric_key
      *
-     * @param \Ebay\Sell\Analytics\Model\BenchmarkMetadata|null $metadata metadata
+     * @param string|null $metric_key This field indicates the customer service metric being returned in the associated metrics container. The field is set as follows: TRANSACTION_COUNT &ndash; When set to this value, the associated value field equals the total number of transactions completed in the seller group for the metric in the given dimension during the associated evaluationCycle. COUNT &ndash; When set to this value, the associated value field is set to the total number of transactions the seller completed that meet the criteria of the customer service metric type for the given dimension that occurred during the evaluationCycle. RATE &ndash; When set to this value, the value of the associated value field is the rate of the customer service metric type in the given dimension during the associated evaluationCycle. Specifically, when metricKey is set to RATE, the associated value field is set to the value of metricKey TRANSACTION_COUNT divided by the value of metricKey COUNT. The returned benchmark.rating for the seller is based on this calculated value.
      *
      * @return self
      */
-    public function setMetadata($metadata)
+    public function setMetricKey($metric_key)
     {
-        $this->container['metadata'] = $metadata;
+        $this->container['metric_key'] = $metric_key;
 
         return $this;
     }
 
     /**
-     * Gets rating
+     * Gets value
      *
      * @return string|null
      */
-    public function getRating()
+    public function getValue()
     {
-        return $this->container['rating'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets rating
+     * Sets value
      *
-     * @param string|null $rating This field returns seller's rating for the customer service metric. The rating is set to a value that equals the relative deviation between the seller's metric value and the benchmark value for the customer service metric. Deviation values range from LOW to VERY HIGH, and the lower the deviation, the better the seller rating. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/analytics/types/api:RatingTypeEnum'>eBay API documentation</a>
+     * @param string|null $value This field is set to the seller's numeric rating for the associated metricKey for the given dimension during the evaluationCycle. To determine the seller's rating for this metric, the value of this field is compared to the average metric value of the group.
      *
      * @return self
      */
-    public function setRating($rating)
+    public function setValue($value)
     {
-        $this->container['rating'] = $rating;
+        $this->container['value'] = $value;
 
         return $this;
     }
@@ -340,7 +340,7 @@ class MetricBenchmark implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

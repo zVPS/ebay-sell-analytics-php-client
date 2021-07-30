@@ -1,11 +1,11 @@
 <?php
 /**
- * BenchmarkMetadata
+ * Distribution
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * BenchmarkMetadata Class Doc Comment
+ * Distribution Class Doc Comment
  *
  * @category Class
- * @description This complex type defines the fields that comprise the benchmark against which the seller&#39;s performance is compared. The comparison determines the seller&#39;s rating for the metric.
- * @package  Ebay\Sell
+ * @description This complex type defines of a piece of data that is grouped by the associated &lt;b&gt;basis&lt;/b&gt;. It contains the &lt;b&gt;name&lt;/b&gt; for the data set and its associated &lt;b&gt;value&lt;/b&gt;.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class BenchmarkMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
+class Distribution implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BenchmarkMetadata';
+    protected static $openAPIModelName = 'Distribution';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,8 @@ class BenchmarkMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'average' => 'string'
+        'name' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -71,7 +72,8 @@ class BenchmarkMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'average' => null
+        'name' => null,
+        'value' => null
     ];
 
     /**
@@ -101,7 +103,8 @@ class BenchmarkMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'average' => 'average'
+        'name' => 'name',
+        'value' => 'value'
     ];
 
     /**
@@ -110,7 +113,8 @@ class BenchmarkMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'average' => 'setAverage'
+        'name' => 'setName',
+        'value' => 'setValue'
     ];
 
     /**
@@ -119,7 +123,8 @@ class BenchmarkMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'average' => 'getAverage'
+        'name' => 'getName',
+        'value' => 'getValue'
     ];
 
     /**
@@ -179,7 +184,8 @@ class BenchmarkMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['average'] = isset($data['average']) ? $data['average'] : null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -207,25 +213,49 @@ class BenchmarkMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets average
+     * Gets name
      *
      * @return string|null
      */
-    public function getAverage()
+    public function getName()
     {
-        return $this->container['average'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets average
+     * Sets name
      *
-     * @param string|null $average This field returns the average value for the group, as defined by the specified basis. When the benchmark basis is set to PEER_BENCHMARK, the value returned in this field is the benchmark value to which the seller's metric value is compared to determine the seller's rating for the customer service metric.
+     * @param string|null $name The name of a distribution in which the seller is active.
      *
      * @return self
      */
-    public function setAverage($average)
+    public function setName($name)
     {
-        $this->container['average'] = $average;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return string|null
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param string|null $value This field contains the number of transactions the seller had in the distribution (identified by the associated name field) during the metric evaluationCycle.
+     *
+     * @return self
+     */
+    public function setValue($value)
+    {
+        $this->container['value'] = $value;
 
         return $this;
     }
@@ -250,7 +280,7 @@ class BenchmarkMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

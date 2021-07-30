@@ -1,11 +1,11 @@
 <?php
 /**
- * Report
+ * Record
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * Report Class Doc Comment
+ * Record Class Doc Comment
  *
  * @category Class
- * @description The complex type that defines that defines the report.
- * @package  Ebay\Sell
+ * @description Type that defines the fields of the individual record of the report.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Report implements ModelInterface, ArrayAccess, \JsonSerializable
+class Record implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Report';
+    protected static $openAPIModelName = 'Record';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,13 +60,8 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dimension_metadata' => '\Ebay\Sell\Analytics\Model\Metadata[]',
-        'end_date' => 'string',
-        'header' => '\Ebay\Sell\Analytics\Model\Header',
-        'last_updated_date' => 'string',
-        'records' => '\Ebay\Sell\Analytics\Model\Record[]',
-        'start_date' => 'string',
-        'warnings' => '\Ebay\Sell\Analytics\Model\Error[]'
+        'dimension_values' => '\Ebay\Sell\Analytics\Model\Value[]',
+        'metric_values' => '\Ebay\Sell\Analytics\Model\Value[]'
     ];
 
     /**
@@ -77,13 +72,8 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'dimension_metadata' => null,
-        'end_date' => null,
-        'header' => null,
-        'last_updated_date' => null,
-        'records' => null,
-        'start_date' => null,
-        'warnings' => null
+        'dimension_values' => null,
+        'metric_values' => null
     ];
 
     /**
@@ -113,13 +103,8 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'dimension_metadata' => 'dimensionMetadata',
-        'end_date' => 'endDate',
-        'header' => 'header',
-        'last_updated_date' => 'lastUpdatedDate',
-        'records' => 'records',
-        'start_date' => 'startDate',
-        'warnings' => 'warnings'
+        'dimension_values' => 'dimensionValues',
+        'metric_values' => 'metricValues'
     ];
 
     /**
@@ -128,13 +113,8 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'dimension_metadata' => 'setDimensionMetadata',
-        'end_date' => 'setEndDate',
-        'header' => 'setHeader',
-        'last_updated_date' => 'setLastUpdatedDate',
-        'records' => 'setRecords',
-        'start_date' => 'setStartDate',
-        'warnings' => 'setWarnings'
+        'dimension_values' => 'setDimensionValues',
+        'metric_values' => 'setMetricValues'
     ];
 
     /**
@@ -143,13 +123,8 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'dimension_metadata' => 'getDimensionMetadata',
-        'end_date' => 'getEndDate',
-        'header' => 'getHeader',
-        'last_updated_date' => 'getLastUpdatedDate',
-        'records' => 'getRecords',
-        'start_date' => 'getStartDate',
-        'warnings' => 'getWarnings'
+        'dimension_values' => 'getDimensionValues',
+        'metric_values' => 'getMetricValues'
     ];
 
     /**
@@ -209,13 +184,8 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['dimension_metadata'] = isset($data['dimension_metadata']) ? $data['dimension_metadata'] : null;
-        $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
-        $this->container['header'] = isset($data['header']) ? $data['header'] : null;
-        $this->container['last_updated_date'] = isset($data['last_updated_date']) ? $data['last_updated_date'] : null;
-        $this->container['records'] = isset($data['records']) ? $data['records'] : null;
-        $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
-        $this->container['warnings'] = isset($data['warnings']) ? $data['warnings'] : null;
+        $this->container['dimension_values'] = $data['dimension_values'] ?? null;
+        $this->container['metric_values'] = $data['metric_values'] ?? null;
     }
 
     /**
@@ -243,169 +213,49 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets dimension_metadata
+     * Gets dimension_values
      *
-     * @return \Ebay\Sell\Analytics\Model\Metadata[]|null
+     * @return \Ebay\Sell\Analytics\Model\Value[]|null
      */
-    public function getDimensionMetadata()
+    public function getDimensionValues()
     {
-        return $this->container['dimension_metadata'];
+        return $this->container['dimension_values'];
     }
 
     /**
-     * Sets dimension_metadata
+     * Sets dimension_values
      *
-     * @param \Ebay\Sell\Analytics\Model\Metadata[]|null $dimension_metadata A complex type containing the header of the report and the type of data containted in the rows of the report.
+     * @param \Ebay\Sell\Analytics\Model\Value[]|null $dimension_values A list where each element contains either the string DAY (if the dimension is DAY), or the listing ID for which the record's metric data is computed. A second array member, applicable, is always true for dimension values.
      *
      * @return self
      */
-    public function setDimensionMetadata($dimension_metadata)
+    public function setDimensionValues($dimension_values)
     {
-        $this->container['dimension_metadata'] = $dimension_metadata;
+        $this->container['dimension_values'] = $dimension_values;
 
         return $this;
     }
 
     /**
-     * Gets end_date
+     * Gets metric_values
      *
-     * @return string|null
+     * @return \Ebay\Sell\Analytics\Model\Value[]|null
      */
-    public function getEndDate()
+    public function getMetricValues()
     {
-        return $this->container['end_date'];
+        return $this->container['metric_values'];
     }
 
     /**
-     * Sets end_date
+     * Sets metric_values
      *
-     * @param string|null $end_date The time stamp is formatted as an ISO 8601 string, which is based on the 24-hour Universal Coordinated Time (UTC) clock. If you specify an end date that is beyond the lastUpdatedDate value, eBay returns a report that contains data only up to the lastUpdateDate date. Format: [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss].[sss]Z Example: 2018-08-20T07:09:00.000Z
+     * @param \Ebay\Sell\Analytics\Model\Value[]|null $metric_values A list where each element contains a value field that indicates the record's value for the metric. Each element also contains an applicable field that indicates the veracity of the computed value. Note that there are no metric names or IDs associated with the values returned in this array. The metadata to which these values relate can be found in the key values . The order of the metric values in this array equals the order of the key values in metadataHeader.
      *
      * @return self
      */
-    public function setEndDate($end_date)
+    public function setMetricValues($metric_values)
     {
-        $this->container['end_date'] = $end_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets header
-     *
-     * @return \Ebay\Sell\Analytics\Model\Header|null
-     */
-    public function getHeader()
-    {
-        return $this->container['header'];
-    }
-
-    /**
-     * Sets header
-     *
-     * @param \Ebay\Sell\Analytics\Model\Header|null $header header
-     *
-     * @return self
-     */
-    public function setHeader($header)
-    {
-        $this->container['header'] = $header;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_updated_date
-     *
-     * @return string|null
-     */
-    public function getLastUpdatedDate()
-    {
-        return $this->container['last_updated_date'];
-    }
-
-    /**
-     * Sets last_updated_date
-     *
-     * @param string|null $last_updated_date The date and time, in ISO 8601 format, that indicates the last time the data returned in the report was updated.
-     *
-     * @return self
-     */
-    public function setLastUpdatedDate($last_updated_date)
-    {
-        $this->container['last_updated_date'] = $last_updated_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets records
-     *
-     * @return \Ebay\Sell\Analytics\Model\Record[]|null
-     */
-    public function getRecords()
-    {
-        return $this->container['records'];
-    }
-
-    /**
-     * Sets records
-     *
-     * @param \Ebay\Sell\Analytics\Model\Record[]|null $records A complex type containing the individual data records for the traffic report.
-     *
-     * @return self
-     */
-    public function setRecords($records)
-    {
-        $this->container['records'] = $records;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_date
-     *
-     * @return string|null
-     */
-    public function getStartDate()
-    {
-        return $this->container['start_date'];
-    }
-
-    /**
-     * Sets start_date
-     *
-     * @param string|null $start_date The start date of the date range used to calculate the report, in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setStartDate($start_date)
-    {
-        $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return \Ebay\Sell\Analytics\Model\Error[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \Ebay\Sell\Analytics\Model\Error[]|null $warnings An array of any process errors or warnings that were generated during the processing of the call processing.
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        $this->container['warnings'] = $warnings;
+        $this->container['metric_values'] = $metric_values;
 
         return $this;
     }
@@ -430,7 +280,7 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

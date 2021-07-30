@@ -1,11 +1,11 @@
 <?php
 /**
- * MetadataHeader
+ * BenchmarkMetadata
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * MetadataHeader Class Doc Comment
+ * BenchmarkMetadata Class Doc Comment
  *
  * @category Class
- * @description Type that defines the metadata header fields.
- * @package  Ebay\Sell
+ * @description This complex type defines the fields that comprise the benchmark against which the seller&#39;s performance is compared. The comparison determines the seller&#39;s rating for the metric.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class MetadataHeader implements ModelInterface, ArrayAccess, \JsonSerializable
+class BenchmarkMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MetadataHeader';
+    protected static $openAPIModelName = 'BenchmarkMetadata';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,7 @@ class MetadataHeader implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'key' => 'string',
-        'metadata_keys' => '\Ebay\Sell\Analytics\Model\Definition[]'
+        'average' => 'string'
     ];
 
     /**
@@ -72,8 +71,7 @@ class MetadataHeader implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'key' => null,
-        'metadata_keys' => null
+        'average' => null
     ];
 
     /**
@@ -103,8 +101,7 @@ class MetadataHeader implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'key' => 'key',
-        'metadata_keys' => 'metadataKeys'
+        'average' => 'average'
     ];
 
     /**
@@ -113,8 +110,7 @@ class MetadataHeader implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'key' => 'setKey',
-        'metadata_keys' => 'setMetadataKeys'
+        'average' => 'setAverage'
     ];
 
     /**
@@ -123,8 +119,7 @@ class MetadataHeader implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'key' => 'getKey',
-        'metadata_keys' => 'getMetadataKeys'
+        'average' => 'getAverage'
     ];
 
     /**
@@ -184,8 +179,7 @@ class MetadataHeader implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['key'] = isset($data['key']) ? $data['key'] : null;
-        $this->container['metadata_keys'] = isset($data['metadata_keys']) ? $data['metadata_keys'] : null;
+        $this->container['average'] = $data['average'] ?? null;
     }
 
     /**
@@ -213,49 +207,25 @@ class MetadataHeader implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets key
+     * Gets average
      *
      * @return string|null
      */
-    public function getKey()
+    public function getAverage()
     {
-        return $this->container['key'];
+        return $this->container['average'];
     }
 
     /**
-     * Sets key
+     * Sets average
      *
-     * @param string|null $key The key value used for the report. For example: &quot;key&quot;: &quot;LISTING_ID&quot;
+     * @param string|null $average This field returns the average value for the group, as defined by the specified basis. When the benchmark basis is set to PEER_BENCHMARK, the value returned in this field is the benchmark value to which the seller's metric value is compared to determine the seller's rating for the customer service metric.
      *
      * @return self
      */
-    public function setKey($key)
+    public function setAverage($average)
     {
-        $this->container['key'] = $key;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata_keys
-     *
-     * @return \Ebay\Sell\Analytics\Model\Definition[]|null
-     */
-    public function getMetadataKeys()
-    {
-        return $this->container['metadata_keys'];
-    }
-
-    /**
-     * Sets metadata_keys
-     *
-     * @param \Ebay\Sell\Analytics\Model\Definition[]|null $metadata_keys The list of dimension key values used for the report header. Each list element contains the key name, its data type, and its localized name. For example: &quot;metadataKeys&quot;: [ &nbsp;&nbsp;&quot;key&quot;: &quot;LISTING_TITLE&quot;, &nbsp;&nbsp;&quot;localizedName&quot;: &quot;Listing title&quot;, &nbsp;&nbsp;&quot;dataType&quot;: &quot;STRING&quot;
-     *
-     * @return self
-     */
-    public function setMetadataKeys($metadata_keys)
-    {
-        $this->container['metadata_keys'] = $metadata_keys;
+        $this->container['average'] = $average;
 
         return $this;
     }
@@ -280,7 +250,7 @@ class MetadataHeader implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

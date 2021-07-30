@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,14 +29,14 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
  * StandardsProfile Class Doc Comment
  *
  * @category Class
  * @description A complex type that defines a seller profile.
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
@@ -45,7 +45,7 @@ use \Ebay\Sell\ObjectSerializer;
  */
 class StandardsProfile implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -204,12 +204,12 @@ class StandardsProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['cycle'] = isset($data['cycle']) ? $data['cycle'] : null;
-        $this->container['default_program'] = isset($data['default_program']) ? $data['default_program'] : null;
-        $this->container['evaluation_reason'] = isset($data['evaluation_reason']) ? $data['evaluation_reason'] : null;
-        $this->container['metrics'] = isset($data['metrics']) ? $data['metrics'] : null;
-        $this->container['program'] = isset($data['program']) ? $data['program'] : null;
-        $this->container['standards_level'] = isset($data['standards_level']) ? $data['standards_level'] : null;
+        $this->container['cycle'] = $data['cycle'] ?? null;
+        $this->container['default_program'] = $data['default_program'] ?? null;
+        $this->container['evaluation_reason'] = $data['evaluation_reason'] ?? null;
+        $this->container['metrics'] = $data['metrics'] ?? null;
+        $this->container['program'] = $data['program'] ?? null;
+        $this->container['standards_level'] = $data['standards_level'] ?? null;
     }
 
     /**
@@ -400,7 +400,7 @@ class StandardsProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

@@ -1,11 +1,11 @@
 <?php
 /**
- * FindSellerStandardsProfilesResponse
+ * EvaluationCycle
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Analytics\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 
 /**
- * FindSellerStandardsProfilesResponse Class Doc Comment
+ * EvaluationCycle Class Doc Comment
  *
  * @category Class
- * @description The response container for a list of seller profiles.
- * @package  Ebay\Sell
+ * @description This complex type describes the start and end dates of the of the time period over which the associated benchmark is computed.  &lt;br&gt;&lt;br&gt;All timestamps are based on Mountain Standard Time (MST).  &lt;br&gt;&lt;br&gt;The timestamp is formatted as an &lt;a href&#x3D;\&quot;https://www.iso.org/iso-8601-date-and-time-format.html\&quot; title&#x3D;\&quot;https://www.iso.org\&quot; target&#x3D;\&quot;_blank\&quot;&gt;ISO 8601&lt;/a&gt; string, which is based on the 24-hour Coordinated Universal Time (UTC) clock.
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FindSellerStandardsProfilesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class EvaluationCycle implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FindSellerStandardsProfilesResponse';
+    protected static $openAPIModelName = 'EvaluationCycle';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,10 @@ class FindSellerStandardsProfilesResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'standards_profiles' => '\Ebay\Sell\Analytics\Model\StandardsProfile[]'
+        'end_date' => 'string',
+        'evaluation_date' => 'string',
+        'evaluation_type' => 'string',
+        'start_date' => 'string'
     ];
 
     /**
@@ -71,7 +74,10 @@ class FindSellerStandardsProfilesResponse implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'standards_profiles' => null
+        'end_date' => null,
+        'evaluation_date' => null,
+        'evaluation_type' => null,
+        'start_date' => null
     ];
 
     /**
@@ -101,7 +107,10 @@ class FindSellerStandardsProfilesResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'standards_profiles' => 'standardsProfiles'
+        'end_date' => 'endDate',
+        'evaluation_date' => 'evaluationDate',
+        'evaluation_type' => 'evaluationType',
+        'start_date' => 'startDate'
     ];
 
     /**
@@ -110,7 +119,10 @@ class FindSellerStandardsProfilesResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'standards_profiles' => 'setStandardsProfiles'
+        'end_date' => 'setEndDate',
+        'evaluation_date' => 'setEvaluationDate',
+        'evaluation_type' => 'setEvaluationType',
+        'start_date' => 'setStartDate'
     ];
 
     /**
@@ -119,7 +131,10 @@ class FindSellerStandardsProfilesResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'standards_profiles' => 'getStandardsProfiles'
+        'end_date' => 'getEndDate',
+        'evaluation_date' => 'getEvaluationDate',
+        'evaluation_type' => 'getEvaluationType',
+        'start_date' => 'getStartDate'
     ];
 
     /**
@@ -179,7 +194,10 @@ class FindSellerStandardsProfilesResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['standards_profiles'] = isset($data['standards_profiles']) ? $data['standards_profiles'] : null;
+        $this->container['end_date'] = $data['end_date'] ?? null;
+        $this->container['evaluation_date'] = $data['evaluation_date'] ?? null;
+        $this->container['evaluation_type'] = $data['evaluation_type'] ?? null;
+        $this->container['start_date'] = $data['start_date'] ?? null;
     }
 
     /**
@@ -207,25 +225,97 @@ class FindSellerStandardsProfilesResponse implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets standards_profiles
+     * Gets end_date
      *
-     * @return \Ebay\Sell\Analytics\Model\StandardsProfile[]|null
+     * @return string|null
      */
-    public function getStandardsProfiles()
+    public function getEndDate()
     {
-        return $this->container['standards_profiles'];
+        return $this->container['end_date'];
     }
 
     /**
-     * Sets standards_profiles
+     * Sets end_date
      *
-     * @param \Ebay\Sell\Analytics\Model\StandardsProfile[]|null $standards_profiles A list of the seller's standards profiles. A &quot;standards profile&quot; is a set of eBay seller standards categories and the values related to the associated seller. Profiles are distinguished by a combination of cycle and program values. The &quot;program&quot; value specifies the region to which the data is from. The &quot;cycle&quot; value specifies whether the values were determined just now, or if the values are from the last official eBay seller standards evaluation.
+     * @param string|null $end_date End date and time of the transaction lookback range. All timestamps are based on Mountain Standard Time (MST). The timestamp is formatted as an ISO 8601 string, which is based on the 24-hour Coordinated Universal Time (UTC) clock.
      *
      * @return self
      */
-    public function setStandardsProfiles($standards_profiles)
+    public function setEndDate($end_date)
     {
-        $this->container['standards_profiles'] = $standards_profiles;
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets evaluation_date
+     *
+     * @return string|null
+     */
+    public function getEvaluationDate()
+    {
+        return $this->container['evaluation_date'];
+    }
+
+    /**
+     * Sets evaluation_date
+     *
+     * @param string|null $evaluation_date The ISO-8601 date and time at which the seller was evaluated for this customer service metric rating.
+     *
+     * @return self
+     */
+    public function setEvaluationDate($evaluation_date)
+    {
+        $this->container['evaluation_date'] = $evaluation_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets evaluation_type
+     *
+     * @return string|null
+     */
+    public function getEvaluationType()
+    {
+        return $this->container['evaluation_type'];
+    }
+
+    /**
+     * Sets evaluation_type
+     *
+     * @param string|null $evaluation_type This field specifies the transaction lookback period used for the evaluation. The evaluation_type value specified in the request is returned in this field. There are two possible values: CURRENT &ndash; A monthly evaluation that occurs on the 20th of every month. PROJECTED &ndash; A daily evaluation that provides a projection of how the seller is currently performing with regards to the upcoming evaluation period. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/analytics/types/api:EvaluationTypeEnum'>eBay API documentation</a>
+     *
+     * @return self
+     */
+    public function setEvaluationType($evaluation_type)
+    {
+        $this->container['evaluation_type'] = $evaluation_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_date
+     *
+     * @return string|null
+     */
+    public function getStartDate()
+    {
+        return $this->container['start_date'];
+    }
+
+    /**
+     * Sets start_date
+     *
+     * @param string|null $start_date The start date and time of the transaction lookback range. All timestamps are based on Mountain Standard Time (MST). The timestamp is formatted as an ISO 8601 string, which is based on the 24-hour Coordinated Universal Time (UTC) clock. Format: [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss].[sss]Z Example: 2018-08-04T07:09:00.000Z
+     *
+     * @return self
+     */
+    public function setStartDate($start_date)
+    {
+        $this->container['start_date'] = $start_date;
 
         return $this;
     }
@@ -250,7 +340,7 @@ class FindSellerStandardsProfilesResponse implements ModelInterface, ArrayAccess
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

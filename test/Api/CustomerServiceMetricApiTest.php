@@ -4,7 +4,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,18 +25,18 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace Ebay\Sell\Test\Api;
+namespace Ebay\Sell\Analytics\Test\Api;
 
-use \Ebay\Sell\Configuration;
-use \Ebay\Sell\ApiException;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Analytics\Configuration;
+use \Ebay\Sell\Analytics\ApiException;
+use \Ebay\Sell\Analytics\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
  * CustomerServiceMetricApiTest Class Doc Comment
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Analytics
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
